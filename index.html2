@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products</title>
+  <style>
+    :root{--bg:#0b0b0f;--card:#12121a;--b:#2a2a33;--t:#fff;--m:rgba(255,255,255,.7)}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--t)}
+    .wrap{max-width:1120px;margin:0 auto;padding:26px 16px}
+    h1{margin:0 0 6px;font-size:28px}
+    p{margin:0 0 16px;color:var(--m)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+    .tab{font-size:13px;color:var(--m);border:1px solid var(--b);padding:7px 12px;border-radius:999px;cursor:pointer}
+    .tab.active{color:var(--t);border-color:#6a6a7a}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
+    .card{border:1px solid var(--b);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;cursor:pointer}
+    .img{aspect-ratio:1/1;background:#0f0f14;display:flex;align-items:center;justify-content:center}
+    .img img{width:100%;height:100%;object-fit:cover;display:block}
+    .c{padding:12px}
+    .name{font-weight:800;font-size:14.5px;line-height:1.2;margin:0 0 6px}
+    .meta{display:flex;justify-content:space-between;color:var(--m);font-size:12px}
+    a.btn{margin-top:10px;display:block;text-align:center;text-decoration:none;color:var(--t);border:1px solid var(--b);padding:10px 12px;border-radius:14px}
+    a.btn:hover{border-color:#6a6a7a}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Products</h1>
+    <p>Kattints a cipőre és visz az Itaobuy linkre.</p>
+
+    <div id="tabs" class="tabs"></div>
+    <div id="grid" class="grid"></div>
+  </div>
+
+<script>
+  const PRODUCTS = [
+    {
+      name: "Dior B30",
+      category: "shoes",
+      price: "$28.26",
+      img: "images/dior-b30.png",
+      itaobuy: "https://itaobuy.allapp.link/d5si1uggpf6jjqejpi60"
+    },
+    {
+      name: "Dior B22",
+      category: "shoes",
+      price: "$28.26",
+      img: "images/dior-b22.png",
+      itaobuy: "https://itaobuy.allapp.link/d5si2bggpf6jjqejuhrg"
+    },
+    {
+      name: "Air Max TN (22 styles)",
+      category: "shoes",
+      price: "$23.55",
+      img: "images/airmax.png",
+      itaobuy: "https://itaobuy.allapp.link/d5si2m8a0mjgn6q21uhg"
+    },
+    {
+      name: "Jordan 4 (25 colors)",
+      category: "shoes",
+      price: "$45.53",
+      img: "images/jordan4.png",
+      itaobuy: "https://itaobuy.allapp.link/d5si3qla5kl0iboeuvng"
+    }
+  ];
+
+  const tabsEl = document.getElementById("tabs");
+  const gridEl = document.getElementById("grid");
+  let activeCat = "all";
+
+  function getCats(){
+    const set = new Set(PRODUCTS.map(p => p.category));
+    return ["all", ...Array.from(set)];
+  }
+
+  function renderTabs(){
+    const cats = getCats();
+    tabsEl.innerHTML = cats.map(c =>
+      `<div class="tab ${c===activeCat ? "active":""}" data-cat="${c}">${c==="all"?"All":c}</div>`
+    ).join("");
+
+    tabsEl.querySelectorAll(".tab").forEach(t => {
+      t.onclick = () => {
+        activeCat = t.dataset.cat;
+        render();
+      };
+    });
+  }
+
+  function card(p){
+    return `
+      <div class="card" data-href="${p.itaobuy}">
+        <div class="img">
+          <img src="${p.img}" alt="${p.name}">
+        </div>
+        <div class="c">
+          <div class="name">${p.name}</div>
+          <div class="meta">
+            <span>${p.category}</span>
+            <span>${p.price}</span>
+          </div>
+          <a class="btn" href="${p.itaobuy}" target="_blank">Open</a>
+        </div>
+      </div>
+    `;
+  }
+
+  function render(){
+    tabsEl.querySelectorAll(".tab").forEach(t =>
+      t.classList.toggle("active", t.dataset.cat === activeCat)
+    );
+
+    const filtered = PRODUCTS.filter(p =>
+      activeCat === "all" || p.category === activeCat
+    );
+
+    gridEl.innerHTML = filtered.map(card).join("");
+
+    gridEl.querySelectorAll(".card").forEach(c => {
+      const href = c.dataset.href;
+      c.onclick = (e) => {
+        if(e.target.tagName === "A") return;
+        window.open(href, "_blank");
+      };
+    });
+  }
+
+  renderTabs();
+  render();
+</script>
+</body>
+</html>
