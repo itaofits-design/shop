@@ -15,43 +15,26 @@
       margin-top:2px;padding:12px 14px;border-radius:14px;border:1px solid var(--b);
       background:var(--card);color:var(--t);font-size:15px;min-width:260px;flex:0 0 auto;
     }
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
-    .tab{font-size:13px;color:var(--m);border:1px solid var(--b);padding:7px 12px;border-radius:999px;cursor:pointer;user-select:none}
+
+    /* BIGGER TABS */
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 18px}
+    .tab{
+      font-size:14px;
+      color:var(--m);
+      border:1px solid var(--b);
+      padding:9px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      user-select:none;
+      line-height:1;
+    }
     .tab.active{color:var(--t);border-color:#6a6a7a}
+
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     @media (min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media (min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
 
-    .card{
-      position:relative;
-      border:1px solid var(--b);
-      border-radius:18px;
-      background:var(--card);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      cursor:pointer;
-    }
-    .fav{
-      position:absolute;
-      top:10px;
-      right:10px;
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:1px solid var(--b);
-      background:rgba(18,18,26,.85);
-      color:var(--t);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      user-select:none;
-      backdrop-filter: blur(6px);
-    }
-    .fav:hover{border-color:#6a6a7a}
-    .fav.on{border-color:#6a6a7a}
-    .fav span{font-size:18px;line-height:1}
+    .card{position:relative;border:1px solid var(--b);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column}
     .img{aspect-ratio:1/1;background:#0f0f14;display:flex;align-items:center;justify-content:center}
     .img img{width:100%;height:100%;object-fit:cover;display:block}
     .noimg{color:rgba(255,255,255,.35);font-size:12px}
@@ -62,6 +45,16 @@
     a.btn{margin-top:10px;display:block;text-align:center;text-decoration:none;color:var(--t);border:1px solid var(--b);padding:10px 12px;border-radius:14px}
     a.btn:hover{border-color:#6a6a7a}
     .empty{color:var(--m);padding:18px;border:1px dashed var(--b);border-radius:18px}
+
+    /* FAVORITE BUTTON */
+    .fav{
+      position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:999px;
+      border:1px solid var(--b);background:rgba(18,18,26,.88);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;user-select:none;z-index:5;
+    }
+    .fav:hover{border-color:#6a6a7a}
+    .fav span{font-size:18px;line-height:1}
   </style>
 </head>
 <body>
@@ -79,6 +72,7 @@
   </div>
 
 <script>
+  // ---------- PRODUCTS ----------
   const PRODUCTS = [
     // ---- SHOES ----
     { name:"Dior B30", category:"shoes", price:"$28.26", img:"images/dior-b30.png", itaobuy:"https://itaobuy.allapp.link/d5si1uggpf6jjqejpi60" },
@@ -125,17 +119,33 @@
     { name:"Lacoste Bracelet", category:"accessories", price:"$23.39", img:"images/lacoste-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skb981bc5jk0bvojl0" },
   ];
 
-  // ---------- Favorites (localStorage) ----------
-  const FAV_KEY = "itaofits_favorites_v1";
-  function loadFavs(){
-    try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
-    catch { return new Set(); }
+  // ---------- FAVORITES ----------
+  // Use a simple stable ID: the itaobuy link (unique).
+  const FAV_KEY = "itaofits_favs_v2";
+
+  function getFavArray(){
+    try {
+      const raw = localStorage.getItem(FAV_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
   }
-  function saveFavs(set){
-    localStorage.setItem(FAV_KEY, JSON.stringify(Array.from(set)));
+  function setFavArray(arr){
+    localStorage.setItem(FAV_KEY, JSON.stringify(arr));
   }
-  // We use itaobuy link as a unique ID.
-  let favs = loadFavs();
+  function isFav(id){
+    const arr = getFavArray();
+    return arr.includes(id);
+  }
+  function toggleFav(id){
+    const arr = getFavArray();
+    const i = arr.indexOf(id);
+    if(i >= 0) arr.splice(i, 1);
+    else arr.push(id);
+    setFavArray(arr);
+  }
 
   const tabsEl = document.getElementById("tabs");
   const gridEl = document.getElementById("grid");
@@ -151,11 +161,11 @@
     history.replaceState({}, "", url);
   }
 
-  function uniqCats(){
+  function cats(){
     const set = new Set(PRODUCTS.map(p => (p.category || "other").toLowerCase()));
-    // Favorites tab first after All
-    const cats = Array.from(set).sort();
-    return ["all", "favorites", ...cats];
+    const list = Array.from(set).sort();
+    // Favorites always visible
+    return ["all", "favorites", ...list];
   }
 
   function labelCat(c){
@@ -166,29 +176,31 @@
   }
 
   function renderTabs(){
-    const cats = uniqCats();
-    if(!cats.includes(activeCat)) activeCat = "all";
-    tabsEl.innerHTML = cats.map(c => `<div class="tab ${c===activeCat?"active":""}" data-cat="${c}">${labelCat(c)}</div>`).join("");
+    const list = cats();
+    if(!list.includes(activeCat)) activeCat = "all";
+    tabsEl.innerHTML = list.map(c =>
+      `<div class="tab ${c===activeCat ? "active":""}" data-cat="${c}">${labelCat(c)}</div>`
+    ).join("");
     tabsEl.querySelectorAll(".tab").forEach(t => {
-      t.onclick = () => { activeCat = t.dataset.cat; setUrlCategory(activeCat); render(); };
+      t.addEventListener("click", () => {
+        activeCat = t.dataset.cat;
+        setUrlCategory(activeCat);
+        render();
+      });
     });
   }
-
-  function isFav(p){ return favs.has(p.itaobuy); }
 
   function card(p){
     const img = p.img
       ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
       : `<div class="noimg">No image</div>`;
 
-    const favOn = isFav(p);
-    const heart = favOn ? "❤️" : "🤍";
+    const fav = isFav(p.itaobuy);
+    const heart = fav ? "❤️" : "🤍";
 
     return `
       <div class="card" data-href="${p.itaobuy}">
-        <div class="fav ${favOn ? "on":""}" data-fav="${p.itaobuy}" title="Favorite">
-          <span>${heart}</span>
-        </div>
+        <div class="fav" data-fav="${p.itaobuy}" aria-label="Favorite"><span>${heart}</span></div>
         <div class="img">${img}</div>
         <div class="c">
           <div class="name">${p.name}</div>
@@ -210,39 +222,38 @@
     let list = PRODUCTS;
 
     if(activeCat === "favorites"){
-      list = PRODUCTS.filter(p => isFav(p));
+      const favs = getFavArray();
+      list = PRODUCTS.filter(p => favs.includes(p.itaobuy));
     } else if(activeCat !== "all"){
       list = PRODUCTS.filter(p => (p.category||"other").toLowerCase() === activeCat);
     }
 
-    const filtered = list.filter(p => {
-      const cat = (p.category||"other").toLowerCase();
-      const hay = (p.name + " " + cat + " " + (p.price||"")).toLowerCase();
+    list = list.filter(p => {
+      const hay = (p.name + " " + p.category + " " + p.price).toLowerCase();
       return !q || hay.includes(q);
     });
 
-    gridEl.innerHTML = filtered.length ? filtered.map(card).join("") : `<div class="empty">No results.</div>`;
+    gridEl.innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No results.</div>`;
 
-    // Card click => open link (except when clicking favorite or button)
-    gridEl.querySelectorAll(".card").forEach(c => {
-      const href = c.dataset.href;
-      c.onclick = (e) => {
-        const isLink = e.target && e.target.tagName === "A";
-        const isFavBtn = e.target && (e.target.closest && e.target.closest(".fav"));
-        if(isLink || isFavBtn) return;
-        window.open(href, "_blank", "noopener");
-      };
-    });
-
-    // Favorite toggle
+    // 1) Favorite click (MUST NOT open the link)
     gridEl.querySelectorAll(".fav").forEach(btn => {
-      btn.onclick = (e) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const id = btn.getAttribute("data-fav");
-        if(favs.has(id)) favs.delete(id); else favs.add(id);
-        saveFavs(favs);
+        toggleFav(id);
         render();
-      };
+      });
+    });
+
+    // 2) Card click => open link (except on <a> or favorite)
+    gridEl.querySelectorAll(".card").forEach(c => {
+      const href = c.getAttribute("data-href");
+      c.addEventListener("click", (e) => {
+        if(e.target.tagName === "A") return;
+        if(e.target.closest && e.target.closest(".fav")) return;
+        window.open(href, "_blank", "noopener");
+      });
     });
   }
 
