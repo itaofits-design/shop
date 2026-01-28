@@ -9,8 +9,9 @@
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--t)}
     .wrap{max-width:1120px;margin:0 auto;padding:18px 16px 26px}
 
-    /* TOP PROMO BANNER */
+    /* TOP PROMO BANNER (CLICKABLE) */
     .banner{
+      display:block;
       background:#ff7a00;
       color:#111;
       border-radius:18px;
@@ -18,11 +19,11 @@
       font-weight:900;
       letter-spacing:.2px;
       margin:10px 0 14px;
-      display:flex;
-      justify-content:center;
       text-align:center;
+      text-decoration:none;
     }
-    .banner span{opacity:.9;font-weight:800}
+    .banner:hover{filter:brightness(.98)}
+    .banner:active{transform:translateY(1px)}
 
     .head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
     h1{margin:0 0 6px;font-size:28px}
@@ -76,9 +77,9 @@
 <body>
   <div class="wrap">
 
-    <div class="banner">
+    <a class="banner" href="https://itaobuy.allapp.link/d5snohta5kl0ibqm8uu0" target="_blank" rel="noopener">
       GET 70% OFF — $300 COUPON (LIMITED TIME)
-    </div>
+    </a>
 
     <div class="head">
       <div>
@@ -93,7 +94,6 @@
   </div>
 
 <script>
-  // ---------- PRODUCTS ----------
   const PRODUCTS = [
     // ---- SHOES ----
     { name:"Dior B30", category:"shoes", price:"$28.26", img:"images/dior-b30.png", itaobuy:"https://itaobuy.allapp.link/d5si1uggpf6jjqejpi60" },
@@ -105,7 +105,6 @@
     { name:"Louis Vuitton Skates", category:"shoes", price:"$39.25", img:"images/louis-vuitton-skates.png", itaobuy:"https://itaobuy.allapp.link/d5sl5no1bc5jk0c9omg0" },
     { name:"Balenciaga Runners (25+ Colors)", category:"shoes", price:"$78.50", img:"images/balenciaga-runners.png", itaobuy:"https://itaobuy.allapp.link/d5sl650gpf6jjqfpl2j0" },
     { name:"Nike P-6000 (35+ Colors)", category:"shoes", price:"$29.05", img:"images/nike-p6000.png", itaobuy:"https://itaobuy.allapp.link/d5sl6ovqcfqhuoo22470" },
-
     { name:"Travis Scott Jordan 1 Low", category:"shoes", price:"$34.53", img:"images/travis-scott-jordan-1-low.png", itaobuy:"https://itaobuy.allapp.link/d5snin8a0mjgn6s75cvg" },
     { name:"Off-White Dunks (20+ Styles)", category:"shoes", price:"$45.22", img:"images/off-white-dunks.png", itaobuy:"https://itaobuy.allapp.link/d5snjh0a0mjgn6s7ej10" },
 
@@ -126,7 +125,6 @@
     { name:"Stone Island Hoodie", category:"hoodies", price:"$28.26", img:"images/stone-island-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5sk5v81bc5jk0btjdmg" },
     { name:"Ralph Lauren Quarter Zip (9+ Styles)", category:"hoodies", price:"$34.53", img:"images/ralph-lauren-quarter-zip.png", itaobuy:"https://itaobuy.allapp.link/d5sk6no1bc5jk0bts0h0" },
     { name:"Ralph Lauren Zip Up", category:"hoodies", price:"$22.61", img:"images/ralph-lauren-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5sk775a5kl0ibp8930g" },
-
     { name:"Prada Sweater", category:"hoodies", price:"$45.53", img:"images/prada-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5sngn0a0mjgn6s6ebng" },
     { name:"Essentials Sweater", category:"hoodies", price:"$24.96", img:"images/essentials-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5snh97qcfqhuop0pflg" },
     { name:"Chrome Hearts Hoodie", category:"hoodies", price:"$40.82", img:"images/chrome-hearts-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5snhk5a5kl0ibqj7dag" },
@@ -138,13 +136,27 @@
     { name:"Canada Goose Puffer", category:"jackets", price:"$94.20", img:"images/canada-goose-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5sl9v8gpf6jjqfre9ug" },
     { name:"Moncler Shiny Puffer", category:"jackets", price:"$125.60", img:"images/moncler-shiny-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5slaefqcfqhuoo3odk0" },
 
+    { name:"The North Face Nuptse", category:"jackets", price:"$37.68", img:"images/the-north-face-nuptse.png", itaobuy:"https://itaobuy.allapp.link/d5snpa8gpf6jjq8s85n0" },
+    { name:"Arc'teryx Jacket", category:"jackets", price:"$75.36", img:"images/arcteryx-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snpoogpf6jjq8sgkt0" },
+    { name:"Nike x Nocta Jacket", category:"jackets", price:"$54.95", img:"images/nike-x-nocta-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snq91qljok536tqq5g" },
+    { name:"Moncler Maya", category:"jackets", price:"$62.80", img:"images/moncler-maya.png", itaobuy:"https://itaobuy.allapp.link/d5snqn9qljok536u2im0" },
+
+    // ---- PANTS ----
+    { name:"Chrome Hearts Jeans", category:"pants", price:"$45.37", img:"images/chrome-hearts-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5snrf0a0mjgn6sbf370" },
+    { name:"Louis Vuitton Pants", category:"pants", price:"$42.86", img:"images/louis-vuitton-pants.png", itaobuy:"https://itaobuy.allapp.link/d5snrq01bc5jk0ddsu00" },
+    { name:"Corteiz Pants", category:"pants", price:"$29.67", img:"images/corteiz-pants.png", itaobuy:"https://itaobuy.allapp.link/d5sns6ga0mjgn6sbr4rg" },
+    { name:"Essentials Pants", category:"pants", price:"$23.39", img:"images/essentials-pants.png", itaobuy:"https://itaobuy.allapp.link/d5snskoa0mjgn6sc2di0" },
+    { name:"Ralph Lauren Pants", category:"pants", price:"$37.52", img:"images/ralph-lauren-pants.png", itaobuy:"https://itaobuy.allapp.link/d5snt7ga0mjgn6sc9vbg" },
+    { name:"Chrome Hearts Denim Jeans", category:"pants", price:"$27.79", img:"images/chrome-hearts-denim-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5sntpoa0mjgn6scgvo0" },
+    { name:"Stussy Sweatpants", category:"pants", price:"$31.70", img:"images/stussy-sweatpants.png", itaobuy:"https://itaobuy.allapp.link/d5snu9g1bc5jk0devcrg" },
+    { name:"Big Boy Polar Jeans", category:"pants", price:"$25.23", img:"images/big-boy-polar-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5snumpqljok536vrsu0" },
+
     // ---- ACCESSORIES ----
     { name:"Calvin Klein Boxers (3 Pairs)", category:"accessories", price:"$13.35", img:"images/calvin-klein-boxers.png", itaobuy:"https://itaobuy.allapp.link/d5sk7r8a0mjgn6qs1140" },
     { name:"Chrome Hearts Glasses", category:"accessories", price:"$1.73", img:"images/chrome-hearts-glasses.png", itaobuy:"https://itaobuy.allapp.link/d5ska58gpf6jjqff0t90" },
     { name:"Nike Socks (20+ Colors)", category:"accessories", price:"$9.11", img:"images/nike-socks.png", itaobuy:"https://itaobuy.allapp.link/d5skai7qcfqhuovn9ve0" },
     { name:"Van Cleef Bracelet", category:"accessories", price:"$28.26", img:"images/van-cleef-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skavggpf6jjqffc6ng" },
     { name:"Lacoste Bracelet", category:"accessories", price:"$23.39", img:"images/lacoste-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skb981bc5jk0bvojl0" },
-
     { name:"Louis Vuitton Belts (30+ Styles)", category:"accessories", price:"$11.78", img:"images/louis-vuitton-belts.png", itaobuy:"https://itaobuy.allapp.link/d5snciggpf6jjq8mqnr0" },
     { name:"Elite Backpack (25+ Styles)", category:"accessories", price:"$15.70", img:"images/elite-backpack.png", itaobuy:"https://itaobuy.allapp.link/d5snddga0mjgn6s56g80" },
     { name:"Supreme Boxers", category:"accessories", price:"$3.92", img:"images/supreme-boxers.png", itaobuy:"https://itaobuy.allapp.link/d5sndtda5kl0ibqhrum0" },
@@ -152,7 +164,7 @@
   ];
 
   // ---------- FAVORITES ----------
-  const FAV_KEY = "itaofits_favs_v3";
+  const FAV_KEY = "itaofits_favs_v4";
   function getFavArray(){
     try {
       const raw = localStorage.getItem(FAV_KEY);
