@@ -12,15 +12,8 @@
     h1{margin:0 0 6px;font-size:28px}
     p{margin:0;color:var(--m)}
     .search{
-      margin-top:2px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--b);
-      background:var(--card);
-      color:var(--t);
-      font-size:15px;
-      min-width:260px;
-      flex:0 0 auto;
+      margin-top:2px;padding:12px 14px;border-radius:14px;border:1px solid var(--b);
+      background:var(--card);color:var(--t);font-size:15px;min-width:260px;flex:0 0 auto;
     }
     .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
     .tab{font-size:13px;color:var(--m);border:1px solid var(--b);padding:7px 12px;border-radius:999px;cursor:pointer;user-select:none}
@@ -34,14 +27,7 @@
     .noimg{color:rgba(255,255,255,.35);font-size:12px}
     .c{padding:12px}
     .name{font-weight:800;font-size:14.5px;line-height:1.2;margin:0 0 10px}
-    /* PRICE: centered + emphasized */
-    .price{
-      text-align:center;
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:.2px;
-      margin:6px 0 10px;
-    }
+    .price{text-align:center;font-weight:900;font-size:18px;letter-spacing:.2px;margin:6px 0 10px}
     .meta{display:flex;justify-content:space-between;color:var(--m);font-size:12px}
     a.btn{margin-top:10px;display:block;text-align:center;text-decoration:none;color:var(--t);border:1px solid var(--b);padding:10px 12px;border-radius:14px}
     a.btn:hover{border-color:#6a6a7a}
@@ -55,7 +41,7 @@
         <h1>Products</h1>
         <p>Click any item to open the Itaobuy link.</p>
       </div>
-      <input id="search" class="search" placeholder="Search (e.g., Yeezy, T-Shirt, Bracelet)..." />
+      <input id="search" class="search" placeholder="Search (e.g., Yeezy, T-Shirt, Puffer)..." />
     </div>
 
     <div id="tabs" class="tabs"></div>
@@ -63,15 +49,18 @@
   </div>
 
 <script>
-  // Edit only this list when adding products.
-  const PRODUCTS = [{ category:"t-shirts", price:"$12.34", img:"images/new-item.png", itaobuy:"https://..." },
-
+  const PRODUCTS = [
     // ---- SHOES ----
     { name:"Dior B30", category:"shoes", price:"$28.26", img:"images/dior-b30.png", itaobuy:"https://itaobuy.allapp.link/d5si1uggpf6jjqejpi60" },
     { name:"Dior B22", category:"shoes", price:"$28.26", img:"images/dior-b22.png", itaobuy:"https://itaobuy.allapp.link/d5si2bggpf6jjqejuhrg" },
     { name:"Air Max TN (22 Styles)", category:"shoes", price:"$23.55", img:"images/airmax.png", itaobuy:"https://itaobuy.allapp.link/d5si2m8a0mjgn6q21uhg" },
     { name:"Jordan 4 (25 Colors)", category:"shoes", price:"$45.53", img:"images/jordan4.png", itaobuy:"https://itaobuy.allapp.link/d5si3qla5kl0iboeuvng" },
     { name:"Yeezy 350", category:"shoes", price:"$28.26", img:"images/yeezy-350.png", itaobuy:"https://itaobuy.allapp.link/d5sk1a7qcfqhuovjqkpg" },
+
+    { name:"Air Force 1's (20+ Styles)", category:"shoes", price:"$15.54", img:"images/air-force-1.png", itaobuy:"https://itaobuy.allapp.link/d5sl5dg1bc5jk0c9ka80" },
+    { name:"Louis Vuitton Skates", category:"shoes", price:"$39.25", img:"images/louis-vuitton-skates.png", itaobuy:"https://itaobuy.allapp.link/d5sl5no1bc5jk0c9omg0" },
+    { name:"Balenciaga Runners (25+ Colors)", category:"shoes", price:"$78.50", img:"images/balenciaga-runners.png", itaobuy:"https://itaobuy.allapp.link/d5sl650gpf6jjqfpl2j0" },
+    { name:"Nike P-6000 (35+ Colors)", category:"shoes", price:"$29.05", img:"images/nike-p6000.png", itaobuy:"https://itaobuy.allapp.link/d5sl6ovqcfqhuoo22470" },
 
     // ---- T-SHIRTS ----
     { name:"Moncler T-Shirt", category:"t-shirts", price:"$10.83", img:"images/moncler-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk1ohqljok535cpse0" },
@@ -80,12 +69,23 @@
     { name:"Lacoste T-Shirt", category:"t-shirts", price:"$10.68", img:"images/lacoste-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk3apqljok535dbhn0" },
     { name:"Stone Island T-Shirt", category:"t-shirts", price:"$15.54", img:"images/stone-island-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk4q7qcfqhuovl1r50" },
 
+    { name:"Gallery Dept T-Shirt", category:"t-shirts", price:"$13.97", img:"images/gallery-dept-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sl778a0mjgn6r84mt0" },
+    { name:"Stussy Tees", category:"t-shirts", price:"$16.80", img:"images/stussy-tees.png", itaobuy:"https://itaobuy.allapp.link/d5sl7n8a0mjgn6r8c5eg" },
+    { name:"Supreme Tee", category:"t-shirts", price:"$27.48", img:"images/supreme-tee.png", itaobuy:"https://itaobuy.allapp.link/d5sl81fqcfqhuoo2l8g0" },
+    { name:"Denim Tears Tee", category:"t-shirts", price:"$25.12", img:"images/denim-tears-tee.png", itaobuy:"https://itaobuy.allapp.link/d5sl8ffqcfqhuoo2s9og" },
+
     // ---- HOODIES ----
     { name:"Burberry Zip Up (30+ Styles)", category:"hoodies", price:"$26.38", img:"images/burberry-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5sk4j1qljok535dph10" },
     { name:"Louis Vuitton Sweater", category:"hoodies", price:"$42.39", img:"images/louis-vuitton-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5sk5ifqcfqhuovla4j0" },
     { name:"Stone Island Hoodie", category:"hoodies", price:"$28.26", img:"images/stone-island-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5sk5v81bc5jk0btjdmg" },
     { name:"Ralph Lauren Quarter Zip (9+ Styles)", category:"hoodies", price:"$34.53", img:"images/ralph-lauren-quarter-zip.png", itaobuy:"https://itaobuy.allapp.link/d5sk6no1bc5jk0bts0h0" },
     { name:"Ralph Lauren Zip Up", category:"hoodies", price:"$22.61", img:"images/ralph-lauren-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5sk775a5kl0ibp8930g" },
+
+    // ---- JACKETS ----
+    { name:"Ralph Lauren Puffers", category:"jackets", price:"$80.38", img:"images/ralph-lauren-puffers.png", itaobuy:"https://itaobuy.allapp.link/d5sl93pqljok535s0ekg" },
+    { name:"The North Face 1996 Puffer", category:"jackets", price:"$46.79", img:"images/the-north-face-1996-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5sl9lo1bc5jk0cbjib0" },
+    { name:"Canada Goose Puffer", category:"jackets", price:"$94.20", img:"images/canada-goose-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5sl9v8gpf6jjqfre9ug" },
+    { name:"Moncler Shiny Puffer", category:"jackets", price:"$125.60", img:"images/moncler-shiny-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5slaefqcfqhuoo3odk0" },
 
     // ---- ACCESSORIES ----
     { name:"Calvin Klein Boxers (3 Pairs)", category:"accessories", price:"$13.35", img:"images/calvin-klein-boxers.png", itaobuy:"https://itaobuy.allapp.link/d5sk7r8a0mjgn6qs1140" },
@@ -99,7 +99,6 @@
   const gridEl = document.getElementById("grid");
   const searchEl = document.getElementById("search");
 
-  // URL category support: ?category=shoes
   const qs = new URLSearchParams(location.search);
   let activeCat = (qs.get("category") || "all").toLowerCase();
 
