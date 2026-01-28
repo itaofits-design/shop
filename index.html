@@ -21,7 +21,37 @@
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     @media (min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media (min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
-    .card{border:1px solid var(--b);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;cursor:pointer}
+
+    .card{
+      position:relative;
+      border:1px solid var(--b);
+      border-radius:18px;
+      background:var(--card);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      cursor:pointer;
+    }
+    .fav{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid var(--b);
+      background:rgba(18,18,26,.85);
+      color:var(--t);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      backdrop-filter: blur(6px);
+    }
+    .fav:hover{border-color:#6a6a7a}
+    .fav.on{border-color:#6a6a7a}
+    .fav span{font-size:18px;line-height:1}
     .img{aspect-ratio:1/1;background:#0f0f14;display:flex;align-items:center;justify-content:center}
     .img img{width:100%;height:100%;object-fit:cover;display:block}
     .noimg{color:rgba(255,255,255,.35);font-size:12px}
@@ -95,6 +125,18 @@
     { name:"Lacoste Bracelet", category:"accessories", price:"$23.39", img:"images/lacoste-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skb981bc5jk0bvojl0" },
   ];
 
+  // ---------- Favorites (localStorage) ----------
+  const FAV_KEY = "itaofits_favorites_v1";
+  function loadFavs(){
+    try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
+    catch { return new Set(); }
+  }
+  function saveFavs(set){
+    localStorage.setItem(FAV_KEY, JSON.stringify(Array.from(set)));
+  }
+  // We use itaobuy link as a unique ID.
+  let favs = loadFavs();
+
   const tabsEl = document.getElementById("tabs");
   const gridEl = document.getElementById("grid");
   const searchEl = document.getElementById("search");
@@ -111,11 +153,14 @@
 
   function uniqCats(){
     const set = new Set(PRODUCTS.map(p => (p.category || "other").toLowerCase()));
-    return ["all", ...Array.from(set).sort()];
+    // Favorites tab first after All
+    const cats = Array.from(set).sort();
+    return ["all", "favorites", ...cats];
   }
 
   function labelCat(c){
     if(c==="all") return "All";
+    if(c==="favorites") return "Favorites";
     if(c==="t-shirts") return "T-Shirts";
     return c.charAt(0).toUpperCase() + c.slice(1);
   }
@@ -129,13 +174,21 @@
     });
   }
 
+  function isFav(p){ return favs.has(p.itaobuy); }
+
   function card(p){
     const img = p.img
       ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
       : `<div class="noimg">No image</div>`;
 
+    const favOn = isFav(p);
+    const heart = favOn ? "❤️" : "🤍";
+
     return `
       <div class="card" data-href="${p.itaobuy}">
+        <div class="fav ${favOn ? "on":""}" data-fav="${p.itaobuy}" title="Favorite">
+          <span>${heart}</span>
+        </div>
         <div class="img">${img}</div>
         <div class="c">
           <div class="name">${p.name}</div>
@@ -154,21 +207,41 @@
     tabsEl.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.cat === activeCat));
     const q = (searchEl.value || "").toLowerCase().trim();
 
-    const filtered = PRODUCTS.filter(p => {
+    let list = PRODUCTS;
+
+    if(activeCat === "favorites"){
+      list = PRODUCTS.filter(p => isFav(p));
+    } else if(activeCat !== "all"){
+      list = PRODUCTS.filter(p => (p.category||"other").toLowerCase() === activeCat);
+    }
+
+    const filtered = list.filter(p => {
       const cat = (p.category||"other").toLowerCase();
-      const matchCat = (activeCat==="all") || (cat===activeCat);
       const hay = (p.name + " " + cat + " " + (p.price||"")).toLowerCase();
-      const matchQ = !q || hay.includes(q);
-      return matchCat && matchQ;
+      return !q || hay.includes(q);
     });
 
     gridEl.innerHTML = filtered.length ? filtered.map(card).join("") : `<div class="empty">No results.</div>`;
 
+    // Card click => open link (except when clicking favorite or button)
     gridEl.querySelectorAll(".card").forEach(c => {
       const href = c.dataset.href;
       c.onclick = (e) => {
-        if(e.target.tagName === "A") return;
+        const isLink = e.target && e.target.tagName === "A";
+        const isFavBtn = e.target && (e.target.closest && e.target.closest(".fav"));
+        if(isLink || isFavBtn) return;
         window.open(href, "_blank", "noopener");
+      };
+    });
+
+    // Favorite toggle
+    gridEl.querySelectorAll(".fav").forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-fav");
+        if(favs.has(id)) favs.delete(id); else favs.add(id);
+        saveFavs(favs);
+        render();
       };
     });
   }
