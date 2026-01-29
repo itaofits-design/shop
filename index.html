@@ -27,7 +27,7 @@
       padding:0 14px 28px;
     }
 
-    /* ✅ STICKY TOP AREA (banner + header + tabs always visible) */
+    /* ✅ Sticky top area */
     .topbar{
       position:sticky;
       top:0;
@@ -90,7 +90,7 @@
       padding:12px 20px;
       font-size:15px;
       border:1px solid var(--b);
-      border-radius:12px; /* rectangle */
+      border-radius:12px;
       cursor:pointer;
       color:var(--m);
       background:rgba(255,255,255,.02);
@@ -99,15 +99,12 @@
       transition:filter .12s ease;
     }
     .tab:hover{filter:brightness(1.06)}
-
-    /* ✅ active tab clearly visible */
     .tab.active{
       background:#ffffff !important;
       color:#111111 !important;
       border-color:#ffffff !important;
     }
 
-    /* Space under sticky header so first row isn't hidden */
     .content{
       padding-top:16px;
     }
@@ -135,45 +132,62 @@
       display:flex;
       flex-direction:column;
       height:100%;
+
+      /* ✅ hover animation baseline */
+      transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease, filter .12s ease;
+      will-change:transform;
     }
 
-    /* ✅ consistent image block */
+    /* ✅ Hover highlight: minimal but visible */
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.18);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+      filter:brightness(1.03);
+    }
+
+    /* ✅ keep favorite button crisp on hover */
+    .card:hover .fav{
+      border-color:rgba(255,255,255,.20);
+    }
+
+    /* Image block */
     .img{
       aspect-ratio:4/3;
       background:#0f0f14;
       flex:0 0 auto;
     }
+
+    /* ✅ Option A: same-looking cards (cover, no padding) */
     .img img{
       width:100%;
       height:100%;
-      object-fit:contain; /* makes different item images look consistent */
+      object-fit:cover;
+      object-position:center;
       display:block;
-      padding:10px;       /* small padding like a real catalog */
-      box-sizing:border-box;
     }
 
-    /* ✅ consistent content height no matter title length */
+    /* Content area (equal height feel) */
     .c{
       padding:8px;
       display:flex;
       flex-direction:column;
       flex:1 1 auto;
-      min-height:132px; /* ensures equal overall block feel */
+      min-height:132px;
     }
 
+    /* 2-line clamp so cards match */
     .name{
       font-size:13px;
       font-weight:800;
       margin:0 0 6px;
       line-height:1.2;
 
-      /* clamp to 2 lines so cards stay equal */
       display:-webkit-box;
       -webkit-box-orient:vertical;
       -webkit-line-clamp:2;
       overflow:hidden;
 
-      /* reserve space even for short names */
       min-height:2.4em;
     }
 
@@ -190,7 +204,7 @@
       justify-content:space-between;
       font-size:11px;
       color:var(--m);
-      margin-top:auto; /* pushes meta+button to bottom -> equal height */
+      margin-top:auto;
     }
 
     a.btn{
@@ -203,8 +217,12 @@
       text-decoration:none;
       color:var(--t);
       font-size:13px;
+      transition:border-color .12s ease, filter .12s ease;
     }
-    a.btn:hover{border-color:#6a6a7a}
+    a.btn:hover{
+      border-color:rgba(255,255,255,.22);
+      filter:brightness(1.05);
+    }
 
     /* Favorite */
     .fav{
@@ -222,7 +240,9 @@
       cursor:pointer;
       user-select:none;
       z-index:5;
+      transition:border-color .12s ease, transform .12s ease;
     }
+    .fav:active{transform:scale(.96)}
     .fav span{font-size:17px;line-height:1}
 
     .empty{
@@ -244,13 +264,18 @@
       .name{font-size:12.5px;}
       .price{font-size:15.5px;}
     }
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .card, a.btn, .tab, .fav{transition:none !important;}
+      .card:hover{transform:none;}
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
 
-    <!-- ✅ Sticky area -->
     <div class="topbar">
       <a class="banner" href="https://itaobuy.allapp.link/d5snohta5kl0ibqm8uu0" target="_blank" rel="noopener">
         GET 70% OFF — $300 COUPON (LIMITED TIME)
@@ -276,7 +301,7 @@
   <script>
     let PRODUCTS = [];
 
-    const FAV_KEY = "itaofit_favs_json_v3";
+    const FAV_KEY = "itaofit_favs_json_v4";
     const tabsEl = document.getElementById("tabs");
     const gridEl = document.getElementById("grid");
     const searchEl = document.getElementById("search");
