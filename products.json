@@ -451,7 +451,98 @@
     "price": "$114.61",
     "img": "images/nike-dunk-lobster.png",
     "itaobuy": "https://itaobuy.allapp.link/d5tuc5g1bc5jk0ckrd9g"
+  },  {
+    "name": "Balenciaga Sweater",
+    "category": "hoodies",
+    "price": "$26.69",
+    "img": "images/balenciaga-sweater.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tugb7qcfqhuooehjs0"
+  },
+  {
+    "name": "UFC Hoodie / Zip Up",
+    "category": "hoodies",
+    "price": "$34.54",
+    "img": "images/ufc-hoodie-zip-up.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tugmggpf6jjq86ksh0"
+  },
+  {
+    "name": "Lacoste Zip Up (6 Colors)",
+    "category": "hoodies",
+    "price": "$27.32",
+    "img": "images/lacoste-zip-up.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuh30gpf6jjq86qong"
+  },
+  {
+    "name": "Ralph Lauren Sweater (10 Colors)",
+    "category": "hoodies",
+    "price": "$27.48",
+    "img": "images/ralph-lauren-sweater.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuhi0gpf6jjq8724mg"
+  },
+  {
+    "name": "Lacoste Sweater",
+    "category": "hoodies",
+    "price": "$28.26",
+    "img": "images/lacoste-sweater.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuhr01bc5jk0cnc7p0"
+  },
+  {
+    "name": "Stone Island Sweaters (20+ Colors)",
+    "category": "hoodies",
+    "price": "$12.40",
+    "img": "images/stone-island-sweaters.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tui6n5ar9ogrrti050"
+  },
+  {
+    "name": "AMI Sweater (30+ Colors)",
+    "category": "hoodies",
+    "price": "$25.12",
+    "img": "images/ami-sweater.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuig9qljok5368g1mg"
+  },
+  {
+    "name": "Stussy Crewnecks (12 Styles)",
+    "category": "hoodies",
+    "price": "$26.69",
+    "img": "images/stussy-crewnecks.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuj48a0mjgn6rlo4s0"
+  },
+  {
+    "name": "Essentials Hoodie",
+    "category": "hoodies",
+    "price": "$18.84",
+    "img": "images/essentials-hoodie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tujivqcfqhuoog35ug"
+  },
+  {
+    "name": "Broken Planet Tracksuits",
+    "category": "hoodies",
+    "price": "$42.23",
+    "img": "images/broken-planet-tracksuits.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tujuhqljok5369417g"
+  },
+  {
+    "name": "Spider Hoodie (40 Colors)",
+    "category": "hoodies",
+    "price": "$41.05",
+    "img": "images/spider-hoodie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuk9pqljok53698mc0"
+  },
+  {
+    "name": "Ralph Lauren Tracksuit",
+    "category": "hoodies",
+    "price": "$25.43",
+    "img": "images/ralph-lauren-tracksuit.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuko0a0mjgn6rmdkkg"
+  },
+  {
+    "name": "Corteiz Hoodie (19 Colors)",
+    "category": "hoodies",
+    "price": "$23.55",
+    "img": "images/corteiz-hoodie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tulan5ar9ogrrutnu0"
   }
+
 
 
 
