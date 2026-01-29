@@ -3,75 +3,71 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Products</title>
+  <title>Itaofit</title>
   <style>
     :root{--bg:#0b0b0f;--card:#12121a;--b:#2a2a33;--t:#fff;--m:rgba(255,255,255,.72)}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--t)}
-    .wrap{max-width:1120px;margin:0 auto;padding:18px 16px 26px}
+    .wrap{max-width:1200px;margin:0 auto;padding:18px 14px 28px}
 
-    /* TOP PROMO BANNER (CLICKABLE) */
+    /* CLICKABLE PROMO BANNER */
     .banner{
-      display:block;
-      background:#ff7a00;
-      color:#111;
-      border-radius:18px;
-      padding:12px 14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      margin:10px 0 14px;
-      text-align:center;
-      text-decoration:none;
+      display:block;background:#ff7a00;color:#111;text-align:center;
+      padding:14px;border-radius:14px;font-weight:900;letter-spacing:.4px;
+      margin:10px 0 16px;text-decoration:none;
     }
-    .banner:hover{filter:brightness(.98)}
+    .banner:hover{filter:brightness(.95)}
     .banner:active{transform:translateY(1px)}
 
-    .head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
-    h1{margin:0 0 6px;font-size:28px}
+    /* HEADER */
+    .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+    h1{margin:0;font-size:30px}
     p{margin:0;color:var(--m)}
+
+    /* SEARCH */
     .search{
-      margin-top:2px;padding:12px 14px;border-radius:14px;border:1px solid var(--b);
-      background:var(--card);color:var(--t);font-size:15px;min-width:260px;flex:0 0 auto;
+      padding:12px 14px;border-radius:12px;border:1px solid var(--b);
+      background:var(--card);color:var(--t);font-size:15px;min-width:260px;
     }
 
-    /* BIGGER TABS */
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 18px}
+    /* BIG RECTANGLE TABS */
+    .tabs{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
     .tab{
-      font-size:14px;
-      color:var(--m);
-      border:1px solid var(--b);
-      padding:9px 14px;
-      border-radius:999px;
-      cursor:pointer;
-      user-select:none;
-      line-height:1;
+      padding:12px 20px;font-size:15px;border:1px solid var(--b);
+      border-radius:12px;cursor:pointer;color:var(--m);
+      background:rgba(255,255,255,.02);user-select:none;line-height:1;
     }
-    .tab.active{color:var(--t);border-color:#6a6a7a}
+    .tab.active{color:var(--t);border-color:#6a6a7a;background:rgba(255,255,255,.08)}
 
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media (min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
-    @media (min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
+    /* SMALLER PRODUCT CARDS + MORE COLUMNS */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media (min-width:760px){.grid{grid-template-columns:repeat(4,1fr)}}
+    @media (min-width:1100px){.grid{grid-template-columns:repeat(5,1fr)}}
 
-    .card{position:relative;border:1px solid var(--b);border-radius:18px;background:var(--card);overflow:hidden;display:flex;flex-direction:column}
-    .img{aspect-ratio:1/1;background:#0f0f14;display:flex;align-items:center;justify-content:center}
+    .card{
+      position:relative;border:1px solid var(--b);border-radius:16px;
+      background:var(--card);overflow:hidden;display:flex;flex-direction:column
+    }
+    .img{aspect-ratio:1/1;background:#0f0f14}
     .img img{width:100%;height:100%;object-fit:cover;display:block}
-    .noimg{color:rgba(255,255,255,.35);font-size:12px}
-    .c{padding:12px}
-    .name{font-weight:800;font-size:14.5px;line-height:1.2;margin:0 0 10px}
-    .price{text-align:center;font-weight:900;font-size:18px;letter-spacing:.2px;margin:6px 0 10px}
-    .meta{display:flex;justify-content:space-between;color:var(--m);font-size:12px}
-    a.btn{margin-top:10px;display:block;text-align:center;text-decoration:none;color:var(--t);border:1px solid var(--b);padding:10px 12px;border-radius:14px}
+    .c{padding:10px}
+    .name{font-size:13.5px;font-weight:800;margin:0 0 8px;line-height:1.2}
+    .price{text-align:center;font-size:16px;font-weight:900;margin:0 0 8px}
+    .meta{display:flex;justify-content:space-between;font-size:11px;color:var(--m)}
+    a.btn{
+      display:block;margin-top:8px;padding:9px;text-align:center;
+      border:1px solid var(--b);border-radius:12px;text-decoration:none;color:var(--t);font-size:13px
+    }
     a.btn:hover{border-color:#6a6a7a}
-    .empty{color:var(--m);padding:18px;border:1px dashed var(--b);border-radius:18px}
 
     /* FAVORITE BUTTON */
     .fav{
-      position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:999px;
-      border:1px solid var(--b);background:rgba(18,18,26,.88);
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;user-select:none;z-index:5;
+      position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;
+      border:1px solid var(--b);background:rgba(18,18,26,.9);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;z-index:5;
     }
-    .fav:hover{border-color:#6a6a7a}
-    .fav span{font-size:18px;line-height:1}
+    .fav span{font-size:17px;line-height:1}
+
+    .empty{padding:20px;border:1px dashed var(--b);border-radius:16px;color:var(--m)}
   </style>
 </head>
 <body>
@@ -83,10 +79,10 @@
 
     <div class="head">
       <div>
-        <h1>Products</h1>
-        <p>Click any item to open the Itaobuy link.</p>
+        <h1>Itaofit</h1>
+        <p>Trusted Itaobuy product list</p>
       </div>
-      <input id="search" class="search" placeholder="Search (e.g., Yeezy, T-Shirt, Puffer)..." />
+      <input id="search" class="search" placeholder="Search products..." />
     </div>
 
     <div id="tabs" class="tabs"></div>
@@ -95,50 +91,73 @@
 
 <script>
   const PRODUCTS = [
-    // ---- SHOES ----
+    // ---------------- SHOES ----------------
     { name:"Dior B30", category:"shoes", price:"$28.26", img:"images/dior-b30.png", itaobuy:"https://itaobuy.allapp.link/d5si1uggpf6jjqejpi60" },
     { name:"Dior B22", category:"shoes", price:"$28.26", img:"images/dior-b22.png", itaobuy:"https://itaobuy.allapp.link/d5si2bggpf6jjqejuhrg" },
     { name:"Air Max TN (22 Styles)", category:"shoes", price:"$23.55", img:"images/airmax.png", itaobuy:"https://itaobuy.allapp.link/d5si2m8a0mjgn6q21uhg" },
     { name:"Jordan 4 (25 Colors)", category:"shoes", price:"$45.53", img:"images/jordan4.png", itaobuy:"https://itaobuy.allapp.link/d5si3qla5kl0iboeuvng" },
     { name:"Yeezy 350", category:"shoes", price:"$28.26", img:"images/yeezy-350.png", itaobuy:"https://itaobuy.allapp.link/d5sk1a7qcfqhuovjqkpg" },
+
     { name:"Air Force 1's (20+ Styles)", category:"shoes", price:"$15.54", img:"images/air-force-1.png", itaobuy:"https://itaobuy.allapp.link/d5sl5dg1bc5jk0c9ka80" },
     { name:"Louis Vuitton Skates", category:"shoes", price:"$39.25", img:"images/louis-vuitton-skates.png", itaobuy:"https://itaobuy.allapp.link/d5sl5no1bc5jk0c9omg0" },
     { name:"Balenciaga Runners (25+ Colors)", category:"shoes", price:"$78.50", img:"images/balenciaga-runners.png", itaobuy:"https://itaobuy.allapp.link/d5sl650gpf6jjqfpl2j0" },
     { name:"Nike P-6000 (35+ Colors)", category:"shoes", price:"$29.05", img:"images/nike-p6000.png", itaobuy:"https://itaobuy.allapp.link/d5sl6ovqcfqhuoo22470" },
+
     { name:"Travis Scott Jordan 1 Low", category:"shoes", price:"$34.53", img:"images/travis-scott-jordan-1-low.png", itaobuy:"https://itaobuy.allapp.link/d5snin8a0mjgn6s75cvg" },
     { name:"Off-White Dunks (20+ Styles)", category:"shoes", price:"$45.22", img:"images/off-white-dunks.png", itaobuy:"https://itaobuy.allapp.link/d5snjh0a0mjgn6s7ej10" },
+
     { name:"Air Max Plus", category:"shoes", price:"$23.55", img:"images/air-max-plus.png", itaobuy:"https://itaobuy.allapp.link/d5tq7aogpf6jjqedk5ig" },
     { name:"ASICS Kayano 14", category:"shoes", price:"$37.68", img:"images/asics-kayano-14.png", itaobuy:"https://itaobuy.allapp.link/d5tq7no1bc5jk0atvotg" },
     { name:"Nike Shox TL (30+ Colors)", category:"shoes", price:"$31.40", img:"images/nike-shox-tl.png", itaobuy:"https://itaobuy.allapp.link/d5tq938gpf6jjqeec2f0" },
     { name:"ASICS Gel NYC", category:"shoes", price:"$34.54", img:"images/asics-gel-nyc.png", itaobuy:"https://itaobuy.allapp.link/d5tq9pggpf6jjqeel99g" },
 
-    // ---- T-SHIRTS ----
+    // ---------------- T-SHIRTS ----------------
     { name:"Moncler T-Shirt", category:"t-shirts", price:"$10.83", img:"images/moncler-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk1ohqljok535cpse0" },
     { name:"Ralph Lauren T-Shirt", category:"t-shirts", price:"$10.68", img:"images/ralph-lauren-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk2601bc5jk0bs94rg" },
     { name:"Stussy T-Shirt (35+ Styles)", category:"t-shirts", price:"$10.83", img:"images/stussy-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk50nqcfqhuovl43e0" },
     { name:"Lacoste T-Shirt", category:"t-shirts", price:"$10.68", img:"images/lacoste-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk3apqljok535dbhn0" },
     { name:"Stone Island T-Shirt", category:"t-shirts", price:"$15.54", img:"images/stone-island-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sk4q7qcfqhuovl1r50" },
+
     { name:"Gallery Dept T-Shirt", category:"t-shirts", price:"$13.97", img:"images/gallery-dept-t-shirt.png", itaobuy:"https://itaobuy.allapp.link/d5sl778a0mjgn6r84mt0" },
     { name:"Stussy Tees", category:"t-shirts", price:"$16.80", img:"images/stussy-tees.png", itaobuy:"https://itaobuy.allapp.link/d5sl7n8a0mjgn6r8c5eg" },
     { name:"Supreme Tee", category:"t-shirts", price:"$27.48", img:"images/supreme-tee.png", itaobuy:"https://itaobuy.allapp.link/d5sl81fqcfqhuoo2l8g0" },
     { name:"Denim Tears Tee", category:"t-shirts", price:"$25.12", img:"images/denim-tears-tee.png", itaobuy:"https://itaobuy.allapp.link/d5sl8ffqcfqhuoo2s9og" },
 
-    // ---- HOODIES ----
+    // ---------------- HOODIES ----------------
     { name:"Burberry Zip Up (30+ Styles)", category:"hoodies", price:"$26.38", img:"images/burberry-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5sk4j1qljok535dph10" },
     { name:"Louis Vuitton Sweater", category:"hoodies", price:"$42.39", img:"images/louis-vuitton-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5sk5ifqcfqhuovla4j0" },
     { name:"Stone Island Hoodie", category:"hoodies", price:"$28.26", img:"images/stone-island-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5sk5v81bc5jk0btjdmg" },
     { name:"Ralph Lauren Quarter Zip (9+ Styles)", category:"hoodies", price:"$34.53", img:"images/ralph-lauren-quarter-zip.png", itaobuy:"https://itaobuy.allapp.link/d5sk6no1bc5jk0bts0h0" },
     { name:"Ralph Lauren Zip Up", category:"hoodies", price:"$22.61", img:"images/ralph-lauren-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5sk775a5kl0ibp8930g" },
+
     { name:"Prada Sweater", category:"hoodies", price:"$45.53", img:"images/prada-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5sngn0a0mjgn6s6ebng" },
     { name:"Essentials Sweater", category:"hoodies", price:"$24.96", img:"images/essentials-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5snh97qcfqhuop0pflg" },
     { name:"Chrome Hearts Hoodie", category:"hoodies", price:"$40.82", img:"images/chrome-hearts-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5snhk5a5kl0ibqj7dag" },
     { name:"Burberry Hoodie", category:"hoodies", price:"$47.10", img:"images/burberry-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5snhvvqcfqhuop11kng" },
 
-    // ---- JACKETS ----
+    // last hoodie batch
+    { name:"Balenciaga Hoodies", category:"hoodies", price:"$51.81", img:"images/balenciaga-hoodies.png", itaobuy:"https://itaobuy.allapp.link/d5trl7o1bc5jk0bh6m40" },
+    { name:"Nike Tech Fleece (5+ Colors)", category:"hoodies", price:"$40.82", img:"images/nike-tech-fleece.png", itaobuy:"https://itaobuy.allapp.link/d5trli8gpf6jjqf141f0" },
+    { name:"Dior Quarter Zip", category:"hoodies", price:"$48.67", img:"images/dior-quarter-zip.png", itaobuy:"https://itaobuy.allapp.link/d5trlvfqcfqhuov9dkug" },
+    { name:"Corteiz Zip Up", category:"hoodies", price:"$37.68", img:"images/corteiz-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5trme0a0mjgn6qfeb6g" },
+    { name:"Denim Tears Zip Up", category:"hoodies", price:"$29.83", img:"images/denim-tears-zip-up.png", itaobuy:"https://itaobuy.allapp.link/d5trmq01bc5jk0bhqko0" },
+    { name:"Broken Planet Hoodie", category:"hoodies", price:"$29.83", img:"images/broken-planet-hoodie.png", itaobuy:"https://itaobuy.allapp.link/d5trn7vqcfqhuov9to90" },
+    { name:"Chrome Hearts Longsleeve", category:"hoodies", price:"$43.96", img:"images/chrome-hearts-longsleeve.png", itaobuy:"https://itaobuy.allapp.link/d5trnopqljok5352vop0" },
+    { name:"Quarter Zip", category:"hoodies", price:"$24.96", img:"images/quarter-zip.png", itaobuy:"https://weidian.com/item.html?itemID=7665569495" },
+    { name:"Corteiz Sweater (15+ Styles)", category:"hoodies", price:"$37.68", img:"images/corteiz-sweater.png", itaobuy:"https://itaobuy.allapp.link/d5troqpqljok5353dmo0" },
+    { name:"Off-White Sweaters (20+ Styles)", category:"hoodies", price:"$28.26", img:"images/off-white-sweaters.png", itaobuy:"https://itaobuy.allapp.link/d5trpc0a0mjgn6qgkbo0" },
+
+    // ---------------- JACKETS ----------------
     { name:"Ralph Lauren Puffers", category:"jackets", price:"$80.38", img:"images/ralph-lauren-puffers.png", itaobuy:"https://itaobuy.allapp.link/d5sl93pqljok535s0ekg" },
     { name:"The North Face 1996 Puffer", category:"jackets", price:"$46.79", img:"images/the-north-face-1996-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5sl9lo1bc5jk0cbjib0" },
     { name:"Canada Goose Puffer", category:"jackets", price:"$94.20", img:"images/canada-goose-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5sl9v8gpf6jjqfre9ug" },
     { name:"Moncler Shiny Puffer", category:"jackets", price:"$125.60", img:"images/moncler-shiny-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5slaefqcfqhuoo3odk0" },
+
+    { name:"The North Face Nuptse", category:"jackets", price:"$37.68", img:"images/the-north-face-nuptse.png", itaobuy:"https://itaobuy.allapp.link/d5snpa8gpf6jjq8s85n0" },
+    { name:"Arc'teryx Jacket", category:"jackets", price:"$75.36", img:"images/arcteryx-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snpoogpf6jjq8sgkt0" },
+    { name:"Nike x Nocta Jacket", category:"jackets", price:"$54.95", img:"images/nike-x-nocta-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snq91qljok536tqq5g" },
+    { name:"Moncler Maya", category:"jackets", price:"$62.80", img:"images/moncler-maya.png", itaobuy:"https://itaobuy.allapp.link/d5snqn9qljok536u2im0" },
+
     { name:"Canada Goose Vest", category:"jackets", price:"$56.52", img:"images/canada-goose-vest.png", itaobuy:"https://itaobuy.allapp.link/d5tr7dv5ar9ogrqhhna0" },
     { name:"Helly Hansen Jacket", category:"jackets", price:"$97.34", img:"images/helly-hansen-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5tr7noa0mjgn6q9eu10" },
     { name:"AMI Puffer", category:"jackets", price:"$58.09", img:"images/ami-puffer.png", itaobuy:"https://itaobuy.allapp.link/d5tr9to1bc5jk0bcirtg" },
@@ -151,12 +170,7 @@
     { name:"Nike x C.E (Cav Empt)", category:"jackets", price:"$54.95", img:"images/nike-x-cav-empt.png", itaobuy:"https://itaobuy.allapp.link/d5tremf5ar9ogrqkhge0" },
     { name:"M&M Black Racer Jacket", category:"jackets", price:"$23.55", img:"images/m-and-m-black-racer-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5trfk81bc5jk0beuon0" },
 
-    { name:"The North Face Nuptse", category:"jackets", price:"$37.68", img:"images/the-north-face-nuptse.png", itaobuy:"https://itaobuy.allapp.link/d5snpa8gpf6jjq8s85n0" },
-    { name:"Arc'teryx Jacket", category:"jackets", price:"$75.36", img:"images/arcteryx-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snpoogpf6jjq8sgkt0" },
-    { name:"Nike x Nocta Jacket", category:"jackets", price:"$54.95", img:"images/nike-x-nocta-jacket.png", itaobuy:"https://itaobuy.allapp.link/d5snq91qljok536tqq5g" },
-    { name:"Moncler Maya", category:"jackets", price:"$62.80", img:"images/moncler-maya.png", itaobuy:"https://itaobuy.allapp.link/d5snqn9qljok536u2im0" },
-
-    // ---- PANTS ----
+    // ---------------- PANTS ----------------
     { name:"Chrome Hearts Jeans", category:"pants", price:"$45.37", img:"images/chrome-hearts-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5snrf0a0mjgn6sbf370" },
     { name:"Louis Vuitton Pants", category:"pants", price:"$42.86", img:"images/louis-vuitton-pants.png", itaobuy:"https://itaobuy.allapp.link/d5snrq01bc5jk0ddsu00" },
     { name:"Corteiz Pants", category:"pants", price:"$29.67", img:"images/corteiz-pants.png", itaobuy:"https://itaobuy.allapp.link/d5sns6ga0mjgn6sbr4rg" },
@@ -165,27 +179,31 @@
     { name:"Chrome Hearts Denim Jeans", category:"pants", price:"$27.79", img:"images/chrome-hearts-denim-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5sntpoa0mjgn6scgvo0" },
     { name:"Stussy Sweatpants", category:"pants", price:"$31.70", img:"images/stussy-sweatpants.png", itaobuy:"https://itaobuy.allapp.link/d5snu9g1bc5jk0devcrg" },
     { name:"Big Boy Polar Jeans", category:"pants", price:"$25.23", img:"images/big-boy-polar-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5snumpqljok536vrsu0" },
+
     { name:"Amiri Jeans", category:"pants", price:"$26.53", img:"images/amiri-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5svhv8gpf6jjqbbn7h0" },
     { name:"Gallery Dept Jeans", category:"pants", price:"$31.24", img:"images/gallery-dept-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5svifga0mjgn6upto4g" },
     { name:"Revenge Jeans", category:"pants", price:"$15.54", img:"images/revenge-jeans.png", itaobuy:"https://itaobuy.allapp.link/d5svisogpf6jjqbc0lt0" },
     { name:"Minus Two Cargo Pants", category:"pants", price:"$15.54", img:"images/minus-two-cargo-pants.png", itaobuy:"https://itaobuy.allapp.link/d5svj8ggpf6jjqbc4fmg" },
 
-    // ---- ACCESSORIES ----
+    // ---------------- ACCESSORIES ----------------
     { name:"Calvin Klein Boxers (3 Pairs)", category:"accessories", price:"$13.35", img:"images/calvin-klein-boxers.png", itaobuy:"https://itaobuy.allapp.link/d5sk7r8a0mjgn6qs1140" },
     { name:"Chrome Hearts Glasses", category:"accessories", price:"$1.73", img:"images/chrome-hearts-glasses.png", itaobuy:"https://itaobuy.allapp.link/d5ska58gpf6jjqff0t90" },
     { name:"Nike Socks (20+ Colors)", category:"accessories", price:"$9.11", img:"images/nike-socks.png", itaobuy:"https://itaobuy.allapp.link/d5skai7qcfqhuovn9ve0" },
     { name:"Van Cleef Bracelet", category:"accessories", price:"$28.26", img:"images/van-cleef-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skavggpf6jjqffc6ng" },
     { name:"Lacoste Bracelet", category:"accessories", price:"$23.39", img:"images/lacoste-bracelet.png", itaobuy:"https://itaobuy.allapp.link/d5skb981bc5jk0bvojl0" },
+
     { name:"Louis Vuitton Belts (30+ Styles)", category:"accessories", price:"$11.78", img:"images/louis-vuitton-belts.png", itaobuy:"https://itaobuy.allapp.link/d5snciggpf6jjq8mqnr0" },
     { name:"Elite Backpack (25+ Styles)", category:"accessories", price:"$15.70", img:"images/elite-backpack.png", itaobuy:"https://itaobuy.allapp.link/d5snddga0mjgn6s56g80" },
     { name:"Supreme Boxers", category:"accessories", price:"$3.92", img:"images/supreme-boxers.png", itaobuy:"https://itaobuy.allapp.link/d5sndtda5kl0ibqhrum0" },
     { name:"Goyard Wallets (30+ Styles)", category:"accessories", price:"$12.40", img:"images/goyard-wallets.png", itaobuy:"https://itaobuy.allapp.link/d5sng78a0mjgn6s68n8g" },
+
     { name:"Goyard Bags", category:"accessories", price:"$15.54", img:"images/goyard-bags.png", itaobuy:"https://itaobuy.allapp.link/d5svjsta5kl0ibt6tfsg" },
     { name:"Burberry Beanie", category:"accessories", price:"$7.07", img:"images/burberry-beanie.png", itaobuy:"https://itaobuy.allapp.link/d5svkkpqljok531dk6r0" },
-    { name:"Chrome Hearts Fleur De Lis Ring", category:"accessories", price:"$10.36", img:"images/chrome-hearts-fleur-de-lis-ring.png", itaobuy:"https://itaobuy.allapp.link/d5svl69qljok531dqdvg" },];
+    { name:"Chrome Hearts Fleur De Lis Ring", category:"accessories", price:"$10.36", img:"images/chrome-hearts-fleur-de-lis-ring.png", itaobuy:"https://itaobuy.allapp.link/d5svl69qljok531dqdvg" },
+  ];
 
   // ---------- FAVORITES ----------
-  const FAV_KEY = "itaofits_favs_v4";
+  const FAV_KEY = "itaofit_favs_v1";
   function getFavArray(){
     try {
       const raw = localStorage.getItem(FAV_KEY);
@@ -206,14 +224,13 @@
   const gridEl = document.getElementById("grid");
   const searchEl = document.getElementById("search");
 
-  const qs = new URLSearchParams(location.search);
-  let activeCat = (qs.get("category") || "all").toLowerCase();
+  let activeCat = "all";
 
-  function setUrlCategory(c){
-    const url = new URL(location.href);
-    if(!c || c==="all") url.searchParams.delete("category");
-    else url.searchParams.set("category", c);
-    history.replaceState({}, "", url);
+  function labelCat(c){
+    if(c === "all") return "All";
+    if(c === "favorites") return "Favorites";
+    if(c === "t-shirts") return "T-Shirts";
+    return c.charAt(0).toUpperCase() + c.slice(1);
   }
 
   function cats(){
@@ -222,46 +239,26 @@
     return ["all", "favorites", ...list];
   }
 
-  function labelCat(c){
-    if(c==="all") return "All";
-    if(c==="favorites") return "Favorites";
-    if(c==="t-shirts") return "T-Shirts";
-    return c.charAt(0).toUpperCase() + c.slice(1);
-  }
-
   function renderTabs(){
     const list = cats();
-    if(!list.includes(activeCat)) activeCat = "all";
     tabsEl.innerHTML = list.map(c =>
       `<div class="tab ${c===activeCat ? "active":""}" data-cat="${c}">${labelCat(c)}</div>`
     ).join("");
     tabsEl.querySelectorAll(".tab").forEach(t => {
-      t.addEventListener("click", () => {
-        activeCat = t.dataset.cat;
-        setUrlCategory(activeCat);
-        render();
-      });
+      t.addEventListener("click", () => { activeCat = t.dataset.cat; render(); });
     });
   }
 
   function card(p){
-    const img = p.img
-      ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
-      : `<div class="noimg">No image</div>`;
-
     const heart = isFav(p.itaobuy) ? "❤️" : "🤍";
-
     return `
       <div class="card" data-href="${p.itaobuy}">
-        <div class="fav" data-fav="${p.itaobuy}" aria-label="Favorite"><span>${heart}</span></div>
-        <div class="img">${img}</div>
+        <div class="fav" data-fav="${p.itaobuy}"><span>${heart}</span></div>
+        <div class="img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
         <div class="c">
           <div class="name">${p.name}</div>
           <div class="price">${p.price}</div>
-          <div class="meta">
-            <span>${labelCat(p.category)}</span>
-            <span>Open in Itaobuy</span>
-          </div>
+          <div class="meta"><span>${labelCat((p.category||"other").toLowerCase())}</span><span>Open</span></div>
           <a class="btn" href="${p.itaobuy}" target="_blank" rel="noopener">Open</a>
         </div>
       </div>
@@ -269,7 +266,6 @@
   }
 
   function render(){
-    tabsEl.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.cat === activeCat));
     const q = (searchEl.value || "").toLowerCase().trim();
 
     let list = PRODUCTS;
@@ -282,23 +278,22 @@
     }
 
     list = list.filter(p => {
-      const hay = (p.name + " " + p.category + " " + p.price).toLowerCase();
+      const hay = (p.name + " " + (p.category||"") + " " + (p.price||"")).toLowerCase();
       return !q || hay.includes(q);
     });
 
     gridEl.innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No results.</div>`;
 
-    // Favorite click
+    // favorite click
     gridEl.querySelectorAll(".fav").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault(); e.stopPropagation();
         toggleFav(btn.getAttribute("data-fav"));
         render();
       });
     });
 
-    // Card click => open link (except on <a> or favorite)
+    // card click opens link (except <a> and favorite)
     gridEl.querySelectorAll(".card").forEach(c => {
       const href = c.getAttribute("data-href");
       c.addEventListener("click", (e) => {
@@ -310,7 +305,6 @@
   }
 
   searchEl.addEventListener("input", render);
-
   renderTabs();
   render();
 </script>
