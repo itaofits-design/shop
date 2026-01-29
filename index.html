@@ -4,96 +4,204 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Itaofit</title>
-  <style>
-    :root{--bg:#0b0b0f;--card:#12121a;--b:#2a2a33;--t:#fff;--m:rgba(255,255,255,.72)}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--t)}
-    .wrap{max-width:1200px;margin:0 auto;padding:18px 14px 28px}
 
-    .banner{
-      display:block;background:#ff7a00;color:#111;text-align:center;
-      padding:14px;border-radius:14px;font-weight:900;letter-spacing:.4px;
-      margin:10px 0 16px;text-decoration:none;
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#12121a;
+      --b:#2a2a33;
+      --t:#ffffff;
+      --m:rgba(255,255,255,.72);
     }
-    .banner:hover{filter:brightness(.95)}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);
+      color:var(--t);
+    }
+
+    .wrap{
+      max-width:1280px;
+      margin:0 auto;
+      padding:18px 14px 28px;
+    }
+
+    /* Promo banner */
+    .banner{
+      display:block;
+      background:#ff7a00;
+      color:#111;
+      text-align:center;
+      padding:14px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.4px;
+      margin:10px 0 16px;
+      text-decoration:none;
+    }
+    .banner:hover{filter:brightness(.96)}
     .banner:active{transform:translateY(1px)}
 
-    .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+    /* Header */
+    .head{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
     h1{margin:0;font-size:30px}
     p{margin:0;color:var(--m)}
 
+    /* Search */
     .search{
-      padding:12px 14px;border-radius:12px;border:1px solid var(--b);
-      background:var(--card);color:var(--t);font-size:15px;min-width:260px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--b);
+      background:var(--card);
+      color:var(--t);
+      font-size:15px;
+      min-width:260px;
+      outline:none;
     }
 
-    .tabs{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
-
-    /* TÉGLALAP TAB */
+    /* Tabs */
+    .tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:18px 0;
+    }
     .tab{
-      padding:12px 20px;font-size:15px;border:1px solid var(--b);
-      border-radius:12px;cursor:pointer;color:var(--m);
-      background:rgba(255,255,255,.02);user-select:none;line-height:1;
+      padding:12px 20px;
+      font-size:15px;
+      border:1px solid var(--b);
+      border-radius:12px; /* rectangle */
+      cursor:pointer;
+      color:var(--m);
+      background:rgba(255,255,255,.02);
+      user-select:none;
+      line-height:1;
+      transition:filter .12s ease;
+    }
+    .tab:hover{filter:brightness(1.06)}
+    .tab.active{
+      background:#ffffff !important;
+      color:#111111 !important;
+      border-color:#ffffff !important;
     }
 
-    /* ✅ AKTÍV TAB FEHÉR HÁTTÉRREL */
-  .tab.active{
-    background:#ffffff !important;
-    color:#111111 !important;
-    border-color:#ffffff !important;
-}
-
-}
-
+    /* Grid: 2 mobile, 4 tablet, 6 desktop */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+    @media (min-width:760px){
+      .grid{grid-template-columns:repeat(4,1fr);}
+    }
+    @media (min-width:1200px){
+      .grid{grid-template-columns:repeat(6,1fr);}
     }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-/* tablet */
-@media (min-width:760px){
-  .grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-}
-
-/* desktop */
-@media (min-width:1200px){
-  .grid{
-    grid-template-columns:repeat(6,1fr);
-  }
-}
-
-
+    /* Card */
     .card{
-      position:relative;border:1px solid var(--b);border-radius:16px;
-      background:var(--card);overflow:hidden;display:flex;flex-direction:column
+      position:relative;
+      border:1px solid var(--b);
+      border-radius:16px;
+      background:var(--card);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
     }
-    .img{aspect-ratio:1/1;background:#0f0f14}
-    .img img{width:100%;height:100%;object-fit:cover;display:block}
-    .c{padding:10px}
-    .name{font-size:13.5px;font-weight:800;margin:0 0 8px;line-height:1.2}
-    .price{text-align:center;font-size:16px;font-weight:900;margin:0 0 8px}
-    .meta{display:flex;justify-content:space-between;font-size:11px;color:var(--m)}
+
+    /* ✅ not huge squares */
+    .img{
+      aspect-ratio:4/3;
+      background:#0f0f14;
+    }
+    .img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .c{padding:8px;}
+    .name{
+      font-size:13px;
+      font-weight:800;
+      margin:0 0 6px;
+      line-height:1.2;
+    }
+    .price{
+      text-align:center;
+      font-size:16px;
+      font-weight:900;
+      margin:0 0 6px;
+    }
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      font-size:11px;
+      color:var(--m);
+    }
     a.btn{
-      display:block;margin-top:8px;padding:9px;text-align:center;
-      border:1px solid var(--b);border-radius:12px;text-decoration:none;color:var(--t);font-size:13px
+      display:block;
+      margin-top:7px;
+      padding:9px;
+      text-align:center;
+      border:1px solid var(--b);
+      border-radius:12px;
+      text-decoration:none;
+      color:var(--t);
+      font-size:13px;
     }
     a.btn:hover{border-color:#6a6a7a}
 
+    /* Favorite */
     .fav{
-      position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;
-      border:1px solid var(--b);background:rgba(18,18,26,.9);
-      display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;z-index:5;
+      position:absolute;
+      top:8px;
+      right:8px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:1px solid var(--b);
+      background:rgba(18,18,26,.9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      z-index:5;
     }
     .fav span{font-size:17px;line-height:1}
 
-    .empty{padding:20px;border:1px dashed var(--b);border-radius:16px;color:var(--m)}
-    .error{padding:20px;border:1px dashed #ff7a00;border-radius:16px;color:rgba(255,255,255,.85)}
+    .empty{
+      padding:20px;
+      border:1px dashed var(--b);
+      border-radius:16px;
+      color:var(--m);
+      grid-column:1/-1;
+    }
+    .error{
+      padding:20px;
+      border:1px dashed #ff7a00;
+      border-radius:16px;
+      color:rgba(255,255,255,.85);
+      grid-column:1/-1;
+    }
+
+    /* Small desktop tweak */
+    @media (min-width:1200px){
+      .name{font-size:12.5px;}
+      .price{font-size:15.5px;}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
 
@@ -111,138 +219,148 @@
 
     <div id="tabs" class="tabs"></div>
     <div id="grid" class="grid"></div>
+
   </div>
 
-<script>
-  // Load products from products.json
-  let PRODUCTS = [];
+  <script>
+    let PRODUCTS = [];
 
-  const FAV_KEY = "itaofit_favs_v_json";
-  const tabsEl = document.getElementById("tabs");
-  const gridEl = document.getElementById("grid");
-  const searchEl = document.getElementById("search");
+    const FAV_KEY = "itaofit_favs_json_v2";
+    const tabsEl = document.getElementById("tabs");
+    const gridEl = document.getElementById("grid");
+    const searchEl = document.getElementById("search");
 
-  let activeCat = "all";
+    let activeCat = "all";
 
-  function getFavArray(){
-    try {
-      const raw = localStorage.getItem(FAV_KEY);
-      const arr = raw ? JSON.parse(raw) : [];
-      return Array.isArray(arr) ? arr : [];
-    } catch { return []; }
-  }
-  function setFavArray(arr){ localStorage.setItem(FAV_KEY, JSON.stringify(arr)); }
-  function isFav(id){ return getFavArray().includes(id); }
-  function toggleFav(id){
-    const arr = getFavArray();
-    const i = arr.indexOf(id);
-    if(i >= 0) arr.splice(i, 1); else arr.push(id);
-    setFavArray(arr);
-  }
+    function getFavArray(){
+      try{
+        const raw = localStorage.getItem(FAV_KEY);
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr : [];
+      }catch{ return []; }
+    }
+    function setFavArray(arr){ localStorage.setItem(FAV_KEY, JSON.stringify(arr)); }
+    function isFav(id){ return getFavArray().includes(id); }
+    function toggleFav(id){
+      const arr = getFavArray();
+      const i = arr.indexOf(id);
+      if(i >= 0) arr.splice(i, 1); else arr.push(id);
+      setFavArray(arr);
+    }
 
-  function labelCat(c){
-    if(c === "all") return "All";
-    if(c === "favorites") return "Favorites";
-    if(c === "t-shirts") return "T-Shirts";
-    return c.charAt(0).toUpperCase() + c.slice(1);
-  }
+    function labelCat(c){
+      if(c === "all") return "All";
+      if(c === "favorites") return "Favorites";
+      if(c === "t-shirts") return "T-Shirts";
+      return c.charAt(0).toUpperCase() + c.slice(1);
+    }
 
-  function cats(){
-    const set = new Set(PRODUCTS.map(p => (p.category || "other").toLowerCase()));
-    const list = Array.from(set).sort();
-    return ["all", "favorites", ...list];
-  }
+    function cats(){
+      const set = new Set(PRODUCTS.map(p => (p.category || "other").toLowerCase()));
+      const list = Array.from(set).sort();
+      return ["all", "favorites", ...list];
+    }
 
-  function renderTabs(){
-    const list = cats();
-    tabsEl.innerHTML = list.map(c =>
-      `<div class="tab ${c===activeCat ? "active":""}" data-cat="${c}">${labelCat(c)}</div>`
-    ).join("");
-    tabsEl.querySelectorAll(".tab").forEach(t => {
-      t.addEventListener("click", () => { activeCat = t.dataset.cat; render(); });
-    });
-  }
+    function renderTabs(){
+      const list = cats();
+      tabsEl.innerHTML = list.map(c =>
+        `<div class="tab ${c===activeCat ? "active":""}" data-cat="${c}">${labelCat(c)}</div>`
+      ).join("");
 
-  function card(p){
-    const heart = isFav(p.itaobuy) ? "❤️" : "🤍";
-    return `
-      <div class="card" data-href="${p.itaobuy}">
-        <div class="fav" data-fav="${p.itaobuy}"><span>${heart}</span></div>
-        <div class="img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
-        <div class="c">
-          <div class="name">${p.name}</div>
-          <div class="price">${p.price}</div>
-          <div class="meta"><span>${labelCat((p.category||"other").toLowerCase())}</span><span>Open</span></div>
-          <a class="btn" href="${p.itaobuy}" target="_blank" rel="noopener">Open</a>
+      tabsEl.querySelectorAll(".tab").forEach(t => {
+        t.addEventListener("click", () => {
+          activeCat = t.dataset.cat;
+          render(); // render will also enforce active highlight
+        });
+      });
+    }
+
+    function enforceActiveTab(){
+      tabsEl.querySelectorAll(".tab").forEach(t=>{
+        t.classList.toggle("active", t.dataset.cat === activeCat);
+      });
+    }
+
+    function card(p){
+      const heart = isFav(p.itaobuy) ? "❤️" : "🤍";
+      return `
+        <div class="card" data-href="${p.itaobuy}">
+          <div class="fav" data-fav="${p.itaobuy}" title="Favorite"><span>${heart}</span></div>
+          <div class="img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+          <div class="c">
+            <div class="name">${p.name}</div>
+            <div class="price">${p.price}</div>
+            <div class="meta"><span>${labelCat((p.category||"other").toLowerCase())}</span><span>Open</span></div>
+            <a class="btn" href="${p.itaobuy}" target="_blank" rel="noopener">Open</a>
+          </div>
         </div>
-      </div>
-    `;
-  }
-
-  function render(){
-    // ensure active tab highlight always updates
-    tabsEl.querySelectorAll(".tab").forEach(t=>{
-    t.classList.toggle("active", t.dataset.cat === activeCat);
-});
-
-    const q = (searchEl.value || "").toLowerCase().trim();
-
-    let list = PRODUCTS;
-
-    if(activeCat === "favorites"){
-      const favs = getFavArray();
-      list = PRODUCTS.filter(p => favs.includes(p.itaobuy));
-    } else if(activeCat !== "all"){
-      list = PRODUCTS.filter(p => (p.category||"other").toLowerCase() === activeCat);
+      `;
     }
 
-    list = list.filter(p => {
-      const hay = (p.name + " " + (p.category||"") + " " + (p.price||"")).toLowerCase();
-      return !q || hay.includes(q);
-    });
+    function render(){
+      enforceActiveTab();
 
-    gridEl.innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No results.</div>`;
+      const q = (searchEl.value || "").toLowerCase().trim();
+      let list = PRODUCTS;
 
-    gridEl.querySelectorAll(".fav").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault(); e.stopPropagation();
-        toggleFav(btn.getAttribute("data-fav"));
+      if(activeCat === "favorites"){
+        const favs = getFavArray();
+        list = PRODUCTS.filter(p => favs.includes(p.itaobuy));
+      } else if(activeCat !== "all"){
+        list = PRODUCTS.filter(p => (p.category || "other").toLowerCase() === activeCat);
+      }
+
+      if(q){
+        list = list.filter(p => {
+          const hay = (p.name + " " + (p.category||"") + " " + (p.price||"")).toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      gridEl.innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No results.</div>`;
+
+      // favorite click
+      gridEl.querySelectorAll(".fav").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault(); e.stopPropagation();
+          toggleFav(btn.getAttribute("data-fav"));
+          render();
+        });
+      });
+
+      // card click opens link (except <a> and favorite)
+      gridEl.querySelectorAll(".card").forEach(c => {
+        const href = c.getAttribute("data-href");
+        c.addEventListener("click", (e) => {
+          if(e.target.tagName === "A") return;
+          if(e.target.closest && e.target.closest(".fav")) return;
+          window.open(href, "_blank", "noopener");
+        });
+      });
+    }
+
+    searchEl.addEventListener("input", render);
+
+    async function init(){
+      try{
+        const res = await fetch("./products.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("Could not load products.json");
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("products.json is not an array");
+        PRODUCTS = data;
+
+        renderTabs();
         render();
-      });
-    });
-
-    gridEl.querySelectorAll(".card").forEach(c => {
-      const href = c.getAttribute("data-href");
-      c.addEventListener("click", (e) => {
-        if(e.target.tagName === "A") return;
-        if(e.target.closest && e.target.closest(".fav")) return;
-        window.open(href, "_blank", "noopener");
-      });
-    });
-  }
-
-  searchEl.addEventListener("input", render);
-
-  async function init(){
-    try{
-      const res = await fetch("./products.json", { cache: "no-store" });
-      if(!res.ok) throw new Error("Could not load products.json");
-      const data = await res.json();
-      if(!Array.isArray(data)) throw new Error("products.json is not an array");
-      PRODUCTS = data;
-
-      renderTabs();
-      render();
-    }catch(err){
-      gridEl.innerHTML = `<div class="error">
-        <b>Error loading products.</b><br>
-        Make sure <code>products.json</code> is in the same folder as <code>index.html</code> and committed to GitHub.
-      </div>`;
-      console.error(err);
+      }catch(err){
+        console.error(err);
+        gridEl.innerHTML = `<div class="error">
+          <b>Error loading products.</b><br>
+          Make sure <code>products.json</code> is in the same folder as <code>index.html</code> and committed.
+        </div>`;
+      }
     }
-  }
 
-  init();
-</script>
+    init();
+  </script>
 </body>
 </html>
