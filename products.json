@@ -89,5 +89,97 @@
   {"name":"Goyard Wallets (30+ Styles)","category":"accessories","price":"$12.40","img":"images/goyard-wallets.png","itaobuy":"https://itaobuy.allapp.link/d5sng78a0mjgn6s68n8g"},
   {"name":"Goyard Bags","category":"accessories","price":"$15.54","img":"images/goyard-bags.png","itaobuy":"https://itaobuy.allapp.link/d5svjsta5kl0ibt6tfsg"},
   {"name":"Burberry Beanie","category":"accessories","price":"$7.07","img":"images/burberry-beanie.png","itaobuy":"https://itaobuy.allapp.link/d5svkkpqljok531dk6r0"},
-  {"name":"Chrome Hearts Fleur De Lis Ring","category":"accessories","price":"$10.36","img":"images/chrome-hearts-fleur-de-lis-ring.png","itaobuy":"https://itaobuy.allapp.link/d5svl69qljok531dqdvg"}
+  {"name":"Chrome Hearts Fleur De Lis Ring","category":"accessories","price":"$10.36","img":"images/chrome-hearts-fleur-de-lis-ring.png","itaobuy":"https://itaobuy.allapp.link/d5svl69qljok531dqdvg"},
+    {
+    "name": "PURPLE Jeans",
+    "category": "pants",
+    "price": "$43.80",
+    "img": "images/purple-jeans.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tscaga0mjgn6qojbp0"
+  },
+  {
+    "name": "Lost Shadows Jeans",
+    "category": "pants",
+    "price": "$39.09",
+    "img": "images/lostshadows-jeans.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsco0gpf6jjqfapif0"
+  },
+  {
+    "name": "Acne Studios Cargo Pants",
+    "category": "pants",
+    "price": "$73.63",
+    "img": "images/acna-studios-cargos.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsdh7qcfqhuovj7vqg"
+  },
+  {
+    "name": "Nike Sweatpants",
+    "category": "pants",
+    "price": "$28.26",
+    "img": "images/nike-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsdqnqcfqhuovjbq00"
+  },
+  {
+    "name": "Yeezy Sweatpants",
+    "category": "pants",
+    "price": "$29.83",
+    "img": "images/yeezy-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tse2vqcfqhuovjf44g"
+  },
+  {
+    "name": "Palm Angels Sweatpants (10+ Colors)",
+    "category": "pants",
+    "price": "$30.61",
+    "img": "images/palm-angels-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsedhqljok535cek9g"
+  },
+  {
+    "name": "Corteiz Sweatpants",
+    "category": "pants",
+    "price": "$29.05",
+    "img": "images/corteiz-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsen7qcfqhuovjn1n0"
+  },
+  {
+    "name": "Nike Tech Fleece Sweatpants",
+    "category": "pants",
+    "price": "$28.26",
+    "img": "images/nike-tech-fleece-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsf2n5ar9ogrr1tpmg"
+  },
+  {
+    "name": "Travis Scott Sweatpants",
+    "category": "pants",
+    "price": "$29.83",
+    "img": "images/travis-scott-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsfcpqljok535cqtj0"
+  },
+  {
+    "name": "Gallery Dept Sweatpants (30+ Colors)",
+    "category": "pants",
+    "price": "$30.61",
+    "img": "images/gallery-dept-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsfrnqcfqhuovk5d90"
+  },
+  {
+    "name": "Balenciaga Sweatpants",
+    "category": "pants",
+    "price": "$19.68",
+    "img": "images/balenciaga-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsg78a0mjgn6qq4rkg"
+  },
+  {
+    "name": "Arc'teryx Waterproof Sweatpants",
+    "category": "pants",
+    "price": "$45.31",
+    "img": "images/arcteryx-waterproof-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsgn75ar9ogrr2ijlg"
+  },
+  {
+    "name": "Essentials Sweatpants",
+    "category": "pants",
+    "price": "$31.40",
+    "img": "images/essentials-sweatpants.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tsh675ar9ogrr2ogf0"
+  }
+
 ]
