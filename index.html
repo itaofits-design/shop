@@ -24,7 +24,19 @@
     .wrap{
       max-width:1280px;
       margin:0 auto;
-      padding:18px 14px 28px;
+      padding:0 14px 28px;
+    }
+
+    /* ✅ STICKY TOP AREA (banner + header + tabs always visible) */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:rgba(11,11,15,.88);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      padding:14px 0 10px;
     }
 
     /* Promo banner */
@@ -33,11 +45,11 @@
       background:#ff7a00;
       color:#111;
       text-align:center;
-      padding:14px;
+      padding:12px 14px;
       border-radius:14px;
       font-weight:900;
       letter-spacing:.4px;
-      margin:10px 0 16px;
+      margin:0 0 12px;
       text-decoration:none;
     }
     .banner:hover{filter:brightness(.96)}
@@ -50,6 +62,7 @@
       gap:14px;
       align-items:flex-start;
       flex-wrap:wrap;
+      margin-bottom:12px;
     }
     h1{margin:0;font-size:30px}
     p{margin:0;color:var(--m)}
@@ -71,7 +84,7 @@
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin:18px 0;
+      margin:0;
     }
     .tab{
       padding:12px 20px;
@@ -86,10 +99,17 @@
       transition:filter .12s ease;
     }
     .tab:hover{filter:brightness(1.06)}
+
+    /* ✅ active tab clearly visible */
     .tab.active{
       background:#ffffff !important;
       color:#111111 !important;
       border-color:#ffffff !important;
+    }
+
+    /* Space under sticky header so first row isn't hidden */
+    .content{
+      padding-top:16px;
     }
 
     /* Grid: 2 mobile, 4 tablet, 6 desktop */
@@ -114,42 +134,68 @@
       overflow:hidden;
       display:flex;
       flex-direction:column;
+      height:100%;
     }
 
-    /* ✅ not huge squares */
+    /* ✅ consistent image block */
     .img{
       aspect-ratio:4/3;
       background:#0f0f14;
+      flex:0 0 auto;
     }
     .img img{
       width:100%;
       height:100%;
-      object-fit:cover;
+      object-fit:contain; /* makes different item images look consistent */
       display:block;
+      padding:10px;       /* small padding like a real catalog */
+      box-sizing:border-box;
     }
 
-    .c{padding:8px;}
+    /* ✅ consistent content height no matter title length */
+    .c{
+      padding:8px;
+      display:flex;
+      flex-direction:column;
+      flex:1 1 auto;
+      min-height:132px; /* ensures equal overall block feel */
+    }
+
     .name{
       font-size:13px;
       font-weight:800;
       margin:0 0 6px;
       line-height:1.2;
+
+      /* clamp to 2 lines so cards stay equal */
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+      overflow:hidden;
+
+      /* reserve space even for short names */
+      min-height:2.4em;
     }
+
     .price{
       text-align:center;
       font-size:16px;
       font-weight:900;
       margin:0 0 6px;
+      min-height:1.2em;
     }
+
     .meta{
       display:flex;
       justify-content:space-between;
       font-size:11px;
       color:var(--m);
+      margin-top:auto; /* pushes meta+button to bottom -> equal height */
     }
+
     a.btn{
       display:block;
-      margin-top:7px;
+      margin-top:8px;
       padding:9px;
       text-align:center;
       border:1px solid var(--b);
@@ -194,7 +240,6 @@
       grid-column:1/-1;
     }
 
-    /* Small desktop tweak */
     @media (min-width:1200px){
       .name{font-size:12.5px;}
       .price{font-size:15.5px;}
@@ -205,27 +250,33 @@
 <body>
   <div class="wrap">
 
-    <a class="banner" href="https://itaobuy.allapp.link/d5snohta5kl0ibqm8uu0" target="_blank" rel="noopener">
-      GET 70% OFF — $300 COUPON (LIMITED TIME)
-    </a>
+    <!-- ✅ Sticky area -->
+    <div class="topbar">
+      <a class="banner" href="https://itaobuy.allapp.link/d5snohta5kl0ibqm8uu0" target="_blank" rel="noopener">
+        GET 70% OFF — $300 COUPON (LIMITED TIME)
+      </a>
 
-    <div class="head">
-      <div>
-        <h1>Itaofit</h1>
-        <p>Trusted Itaobuy product list</p>
+      <div class="head">
+        <div>
+          <h1>Itaofit</h1>
+          <p>Trusted Itaobuy product list</p>
+        </div>
+        <input id="search" class="search" placeholder="Search products..." />
       </div>
-      <input id="search" class="search" placeholder="Search products..." />
+
+      <div id="tabs" class="tabs"></div>
     </div>
 
-    <div id="tabs" class="tabs"></div>
-    <div id="grid" class="grid"></div>
+    <div class="content">
+      <div id="grid" class="grid"></div>
+    </div>
 
   </div>
 
   <script>
     let PRODUCTS = [];
 
-    const FAV_KEY = "itaofit_favs_json_v2";
+    const FAV_KEY = "itaofit_favs_json_v3";
     const tabsEl = document.getElementById("tabs");
     const gridEl = document.getElementById("grid");
     const searchEl = document.getElementById("search");
@@ -270,7 +321,7 @@
       tabsEl.querySelectorAll(".tab").forEach(t => {
         t.addEventListener("click", () => {
           activeCat = t.dataset.cat;
-          render(); // render will also enforce active highlight
+          render();
         });
       });
     }
