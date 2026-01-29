@@ -541,7 +541,42 @@
     "price": "$23.55",
     "img": "images/corteiz-hoodie.png",
     "itaobuy": "https://itaobuy.allapp.link/d5tulan5ar9ogrrutnu0"
+  },  {
+    "name": "LEGO Porsche 911 Set (2000 Pieces)",
+    "category": "accessories",
+    "price": "$38.46",
+    "img": "images/lego-porsche-911-set.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tv369qljok536f5el0"
+  },
+  {
+    "name": "AirPods Pro 3",
+    "category": "accessories",
+    "price": "$40.66",
+    "img": "images/airpods-pro-3.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tv3poa0mjgn6rsbrt0"
+  },
+  {
+    "name": "KAWS Mousepad",
+    "category": "accessories",
+    "price": "$4.71",
+    "img": "images/kaws-mousepad.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tv44ogpf6jjq8eij60"
+  },
+  {
+    "name": "Louis Vuitton Bag (40 Styles)",
+    "category": "accessories",
+    "price": "$62.80",
+    "img": "images/lv-bag.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tv4hg1bc5jk0cut1d0"
+  },
+  {
+    "name": "Supreme Heat Reactive Ski Mask",
+    "category": "accessories",
+    "price": "$17.27",
+    "img": "images/supreme-heat-reactive-ski-mask.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tv4vv5ar9ogrs52mmg"
   }
+
 
 
 
