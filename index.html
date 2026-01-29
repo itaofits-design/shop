@@ -36,10 +36,14 @@
     }
 
     /* ✅ AKTÍV TAB FEHÉR HÁTTÉRREL */
-    .tab.active{
-      background:#ffffff;
-      color:#111111;
-      border-color:#ffffff;
+  .tab.active{
+    background:#ffffff !important;
+    color:#111111 !important;
+    border-color:#ffffff !important;
+}
+
+}
+
     }
 
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
@@ -159,6 +163,11 @@
   }
 
   function render(){
+    // ensure active tab highlight always updates
+    tabsEl.querySelectorAll(".tab").forEach(t=>{
+    t.classList.toggle("active", t.dataset.cat === activeCat);
+});
+
     const q = (searchEl.value || "").toLowerCase().trim();
 
     let list = PRODUCTS;
