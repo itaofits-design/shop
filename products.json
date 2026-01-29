@@ -278,6 +278,97 @@
     "price": "$7.54",
     "img": "images/malboro-t-shirt.png",
     "itaobuy": "https://itaobuy.allapp.link/d5tssm01bc5jk0c1kpe0"
+  },  {
+    "name": "Ray-Ban Sunglasses",
+    "category": "accessories",
+    "price": "$25.12",
+    "img": "images/ray-bans-sunglasses.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5ttti8gpf6jjqfv00rg"
+  },
+  {
+    "name": "Rolex Watches",
+    "category": "accessories",
+    "price": "$67.51",
+    "img": "images/rolex-watches.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5ttug75ar9ogrrlhk70"
+  },
+  {
+    "name": "Moncler Beanie",
+    "category": "accessories",
+    "price": "$9.11",
+    "img": "images/moncler-beanie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5ttuof5ar9ogrrlkqs0"
+  },
+  {
+    "name": "Ralph Lauren Socks",
+    "category": "accessories",
+    "price": "$4.71",
+    "img": "images/ralph-lauren-socks.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5ttvaoa0mjgn6rdk6ag"
+  },
+  {
+    "name": "Prada Chain (6 Colors)",
+    "category": "accessories",
+    "price": "$25.07",
+    "img": "images/prada-chain.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu0b75ar9ogrrm9g80"
+  },
+  {
+    "name": "Chrome Hearts Chain (6 Colors)",
+    "category": "accessories",
+    "price": "$20.25",
+    "img": "images/chrome-hearts-chain.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu0r8a0mjgn6re7do0"
+  },
+  {
+    "name": "Corteiz VVS Grey Beanie",
+    "category": "accessories",
+    "price": "$31.24",
+    "img": "images/corteiz-vvs-grey-beanie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu178a0mjgn6rec9c0"
+  },
+  {
+    "name": "Kanye West College Dropout Beanie",
+    "category": "accessories",
+    "price": "$29.05",
+    "img": "images/kanye-west-college-dropout-beanie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu1jggpf6jjq80jtag"
+  },
+  {
+    "name": "Stussy Beanie (5 Colors)",
+    "category": "accessories",
+    "price": "$6.91",
+    "img": "images/stussy-beanie.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu1t8a0mjgn6rektmg"
+  },
+  {
+    "name": "Chrome Hearts Bracelet (Budget)",
+    "category": "accessories",
+    "price": "$24.96",
+    "img": "images/chrome-hearts-bracelet-budget.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu2a0a0mjgn6req0cg"
+  },
+  {
+    "name": "Cartier Glasses",
+    "category": "accessories",
+    "price": "$9.26",
+    "img": "images/cartier-glasses.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu2i81bc5jk0ch5j4g"
+  },
+  {
+    "name": "Diesel Belt",
+    "category": "accessories",
+    "price": "$8.63",
+    "img": "images/diesel-belt.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu33oa0mjgn6rf45l0"
+  },
+  {
+    "name": "Stone Island Phone Case",
+    "category": "accessories",
+    "price": "$2.17",
+    "img": "images/stone-island-phone-case.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu3e8gpf6jjq81b3ag"
   }
+
 
 ]
