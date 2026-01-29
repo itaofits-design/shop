@@ -27,7 +27,7 @@
       padding:0 14px 28px;
     }
 
-    /* ✅ Sticky top area */
+    /* ✅ Sticky only banner + logo + search */
     .topbar{
       position:sticky;
       top:0;
@@ -62,10 +62,22 @@
       gap:14px;
       align-items:flex-start;
       flex-wrap:wrap;
-      margin-bottom:12px;
     }
-    h1{margin:0;font-size:30px}
-    p{margin:0;color:var(--m)}
+
+    /* ✅ bold logo */
+    .logo{
+      margin:0;
+      font-size:30px;
+      font-weight:900;
+      letter-spacing:.3px;
+      line-height:1.1;
+    }
+
+    .sub{
+      margin:2px 0 0;
+      color:var(--m);
+      font-size:13px;
+    }
 
     /* Search */
     .search{
@@ -79,31 +91,22 @@
       outline:none;
     }
 
-    /* Tabs */
-   .tabs{
-    display:flex;
-    gap:10px;
-    margin:0;
-    padding:0 2px;
+    /* ✅ Tabs are NOT sticky anymore */
+    .tabs-wrap{
+      max-width:1280px;
+      margin:14px auto 0;
+      padding:0 14px;
+    }
 
-  /* ✅ mobile: no wrap + horizontal scroll */
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    overflow-y:hidden;
-    -webkit-overflow-scrolling:touch;
-    white-space:nowrap;
-}
-
-/* ✅ hide scrollbar (mobile + desktop) */
-.tabs::-webkit-scrollbar{height:0}
-.tabs{scrollbar-width:none}
-
-/* ✅ keep tabs from shrinking too small */
-.tab{flex:0 0 auto}
-
+    /* Tabs (back to nice big rectangles) */
+    .tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:0;
     }
     .tab{
-      padding:12px 20px;
+      padding:12px 22px;
       font-size:15px;
       border:1px solid var(--b);
       border-radius:12px;
@@ -149,12 +152,11 @@
       flex-direction:column;
       height:100%;
 
-      /* ✅ hover animation baseline */
       transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease, filter .12s ease;
       will-change:transform;
     }
 
-    /* ✅ Hover highlight: minimal but visible */
+    /* ✅ hover highlight */
     .card:hover{
       transform:translateY(-2px);
       border-color:rgba(255,255,255,.18);
@@ -162,19 +164,13 @@
       filter:brightness(1.03);
     }
 
-    /* ✅ keep favorite button crisp on hover */
-    .card:hover .fav{
-      border-color:rgba(255,255,255,.20);
-    }
-
-    /* Image block */
     .img{
       aspect-ratio:4/3;
       background:#0f0f14;
       flex:0 0 auto;
     }
 
-    /* ✅ Option A: same-looking cards (cover, no padding) */
+    /* ✅ Option A: cover for consistent image size */
     .img img{
       width:100%;
       height:100%;
@@ -183,7 +179,7 @@
       display:block;
     }
 
-    /* Content area (equal height feel) */
+    /* Equal height feel */
     .c{
       padding:8px;
       display:flex;
@@ -192,7 +188,6 @@
       min-height:132px;
     }
 
-    /* 2-line clamp so cards match */
     .name{
       font-size:13px;
       font-weight:800;
@@ -281,7 +276,6 @@
       .price{font-size:15.5px;}
     }
 
-    /* Accessibility: reduce motion */
     @media (prefers-reduced-motion: reduce){
       .card, a.btn, .tab, .fav{transition:none !important;}
       .card:hover{transform:none;}
@@ -292,6 +286,7 @@
 <body>
   <div class="wrap">
 
+    <!-- ✅ Sticky: banner + logo + search only -->
     <div class="topbar">
       <a class="banner" href="https://itaobuy.allapp.link/d5snohta5kl0ibqm8uu0" target="_blank" rel="noopener">
         GET 70% OFF — $300 COUPON (LIMITED TIME)
@@ -299,12 +294,15 @@
 
       <div class="head">
         <div>
-          <h1>Itaofit</h1>
-          <p>Trusted Itaobuy product list</p>
+          <h1 class="logo">Itaofit</h1>
+          <div class="sub">Trusted Itaobuy product list</div>
         </div>
         <input id="search" class="search" placeholder="Search products..." />
       </div>
+    </div>
 
+    <!-- ✅ Tabs not sticky -->
+    <div class="tabs-wrap">
       <div id="tabs" class="tabs"></div>
     </div>
 
@@ -317,7 +315,7 @@
   <script>
     let PRODUCTS = [];
 
-    const FAV_KEY = "itaofit_favs_json_v4";
+    const FAV_KEY = "itaofit_favs_json_v5";
     const tabsEl = document.getElementById("tabs");
     const gridEl = document.getElementById("grid");
     const searchEl = document.getElementById("search");
