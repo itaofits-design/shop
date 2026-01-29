@@ -368,7 +368,91 @@
     "price": "$2.17",
     "img": "images/stone-island-phone-case.png",
     "itaobuy": "https://itaobuy.allapp.link/d5tu3e8gpf6jjq81b3ag"
+  },  {
+    "name": "Air Max 95",
+    "category": "shoes",
+    "price": "$25.12",
+    "img": "images/air-max-95.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu7npqljok5363upsg"
+  },
+  {
+    "name": "Vapormax Plus",
+    "category": "shoes",
+    "price": "$34.54",
+    "img": "images/vapormax-plus.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu839qljok536434hg"
+  },
+  {
+    "name": "SB Dunk (Exclusive)",
+    "category": "shoes",
+    "price": "$34.54",
+    "img": "images/sb-dunk-exclusive.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu8df5ar9ogrrpe7p0"
+  },
+  {
+    "name": "Timberland Boots",
+    "category": "shoes",
+    "price": "$62.80",
+    "img": "images/timberland-boots.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu8qn5ar9ogrrpj8b0"
+  },
+  {
+    "name": "Adidas Samba (15+ Colors)",
+    "category": "shoes",
+    "price": "$25.12",
+    "img": "images/adidas-samba.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu98g1bc5jk0cjof6g"
+  },
+  {
+    "name": "New Balance 9060 (35+ Styles)",
+    "category": "shoes",
+    "price": "$34.54",
+    "img": "images/new-balance-9060.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tu9opqljok5364ngg0"
+  },
+  {
+    "name": "Balenciaga Tracks",
+    "category": "shoes",
+    "price": "$70.65",
+    "img": "images/balenciaga-tracks.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tua3n5ar9ogrrq2k60"
+  },
+  {
+    "name": "Yeezy Slide (New)",
+    "category": "shoes",
+    "price": "$10.99",
+    "img": "images/yeezy-slide.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuadn5ar9ogrrq6ac0"
+  },
+  {
+    "name": "Yeezy Foam Runner",
+    "category": "shoes",
+    "price": "$18.99",
+    "img": "images/yeezy-foam-runner.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuaqf5ar9ogrrqbb1g"
+  },
+  {
+    "name": "Jordan 1 High (Batch)",
+    "category": "shoes",
+    "price": "$59.66",
+    "img": "images/jordan-1-high.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tubeggpf6jjq84dah0"
+  },
+  {
+    "name": "Nike Dunk Low",
+    "category": "shoes",
+    "price": "$35.33",
+    "img": "images/nike-dunk-low.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tubpoa0mjgn6rienng"
+  },
+  {
+    "name": "Nike Dunk Lobster",
+    "category": "shoes",
+    "price": "$114.61",
+    "img": "images/nike-dunk-lobster.png",
+    "itaobuy": "https://itaobuy.allapp.link/d5tuc5g1bc5jk0ckrd9g"
   }
+
 
 
 ]
