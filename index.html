@@ -80,11 +80,27 @@
     }
 
     /* Tabs */
-    .tabs{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin:0;
+   .tabs{
+    display:flex;
+    gap:10px;
+    margin:0;
+    padding:0 2px;
+
+  /* ✅ mobile: no wrap + horizontal scroll */
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;
+}
+
+/* ✅ hide scrollbar (mobile + desktop) */
+.tabs::-webkit-scrollbar{height:0}
+.tabs{scrollbar-width:none}
+
+/* ✅ keep tabs from shrinking too small */
+.tab{flex:0 0 auto}
+
     }
     .tab{
       padding:12px 20px;
